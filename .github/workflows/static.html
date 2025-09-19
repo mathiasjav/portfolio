@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Mathias JAVIERRE</title>
+    <style>
+        /* Réinitialisation des marges et padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Style général */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* En-tête */
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+        }
+
+        .profile-info h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info p {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #34495e;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contenu principal */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Section CV */
+        .cv-section {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .cv-section h2 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            text-align: center;
+
+        }
+
+        .cv-section h3 {
+            margin-top: 1.5rem;
+            color: #3498db;
+        }
+
+        .cv-item {
+            margin-bottom: 1rem;
+        }
+
+        .cv-item h4 {
+            margin-bottom: 0.3rem;
+            color: #2c3e50;
+        }
+
+        .cv-item p {
+            margin-bottom: 0.3rem;
+            color: #555;
+        }
+
+        /* Liste des compétences */
+        .skills-list {
+            list-style-type: none;
+            columns: 2;
+            column-gap: 2rem;
+        }
+
+        .skills-list li {
+            background-color: #eaeaea;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 3px;
+        }
+
+        /* Section Fiches d'activité */
+        .activity-section {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .activity-section h2 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            text-align: center;
+            
+        }
+
+        .activity-item {
+            margin-bottom: 1.5rem;
+            background-color: #c2c2c265;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .activity-item a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow:1px 1px #ff4800;
+        }
+
+        .activity-item a:hover {
+            color: #ff4800;
+            text-decoration: none;
+        }
+        .activity-item p {
+            text-align: center;
+    }
+
+        /* Pied de page */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-container">
+            <img src="https://scontent-cdg4-3.xx.fbcdn.net/v/t39.30808-1/367450189_260797430138859_3303884036511958474_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=110&ccb=1-7&_nc_sid=e99d92&_nc_ohc=4PA56gbH6gQQ7kNvwHthHTF&_nc_oc=AdmmYKKTwj0Acf4FYRXh_dJ9E4W0QZ3iqKUKfskdzt-k_Yr_2eLc3wiZBF0X86Ga1XAE2T-pNohrak9NXw-DCX7s&_nc_zt=24&_nc_ht=scontent-cdg4-3.xx&_nc_gid=C380UQkemBK0hcW_vOjlYw&oh=00_AfYayrRxJxl-5GdMYN2CvhFwk0-ZeudyG-4wiAsNb1U7Bw&oe=68D0A3AC" alt="Photo de profil" class="profile-photo">
+            <div class="profile-info">
+                <h1>Mathias JAVIERRE</h1>
+                <p>Dâte de naissance : 05/03/2008</p>
+                <p>Email : <a href="mailto:mathiasjavierre0@gmail.com" style="color: #fff;">mathiasjavierre0@gmail.com</a></p>
+
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#cv">Mon CV</a>
+        <a href="#skills">Mes Compétences</a>
+        <a href="#activities">Mes Fiches d&#146;Activité</a>
+    </nav>
+
+    <div class="container">
+        <section id="cv" class="cv-section">
+            <h2>Mon CV</h2>
+
+            <h3>Formation</h3>
+            <div class="cv-item">
+                <h4>Coll&#232;ge François Truffaut, Saint-Martin-de-Seignanx</h4>
+                <p>6&#232;me &#224; 5&#232;me</p>
+                <p>2020 - 2022</p>
+            </div>
+
+            <div class="cv-item">
+                <h4>Coll&#232;ge d&#146;Albret, Dax</h4>
+                <p>4&#232;me &#224; 3&#232;me</p>
+                <p>2022 - 2024</p>
+                <p>Brevet des coll&#232;ges professionnel avec mention Assez Bien</p>
+            </div>
+
+            <div class="cv-item">
+                <h4>MFR Maison Familiale Rurale, Pontonx-sur-Adour</h4>
+                <p>Second SN</p>
+                <p>2024-2025</p>
+            </div>
+
+            <h3>Exp&#233;rience Professionnelle</h3>
+            <div class="cv-item">
+                <h4>Stage d&#146;observation - Leclerc du Grand Mail, Saint-Paul-l&#232;s-Dax</h4>
+                <p>Janvier 2024</p>
+                <p>Observ&#233; et assist&#233; aux diff&#233;rentes tâches quotidiennes dans la maintenance dans un supermarch&#233;.</p>
+                            </div>
+
+            <div class="cv-item">
+                <h4>Apprentissage - Leclerc du Grand Mail, Saint-Paul-l&#232;s-Dax</h4>
+                <p>Fin Août 2024</p>
+                <p>Alternance en maintenance : r&#233;paration et entretien (Spot, Chaise, mise en place de r&#233;glette de prix, remplacer les plaques de chambre froide, etc.).</p>
+                <p>Création d'un systême d'administration de l’inventaire, des raccourcis et de la gestion interne &#10222;lien : aucun &#10223;</p>
+
+            </div>
+        </section>
+
+        <section id="skills" class="cv-section">
+            <h2>Mes Comp&#233;tences</h2>
+
+            <h3>Jardinage</h3>
+            <ul class="skills-list">
+                <li>Utilisation de d&#233;broussailleuse</li>
+                <li>Utilisation de tondeuse</li>
+                <li>Utilisation de tronçonneuse</li>
+                <li>Entretien des espaces verts</li>
+            </ul>
+
+            <h3>D&#233;veloppement Web</h3>
+            <ul class="skills-list">
+                <li>HTML : Structure et s&#233;mantique des pages web, utilisation des balises HTML5</li>
+                <li>CSS : Mise en forme et design des pages web, flexbox, grid, animations</li>
+            </ul>
+
+            <h3>Formation en MFR</h3>
+            <ul class="skills-list">
+                <li>IPv4 : Activer le DHCP pour attribuer automatiquement une IP &#224; une machine ou la configurer en statique</li>
+                <li>Composants : Reconna&#206;tre les composants d&#146;une machine, les remplacer ou les &#233;valuer</li>
+                <li>Syst&#232;me dexploitation : Installer un syst&#232;me d&#146;exploitation tel que Windows ou Linux, ou les deux en utilisant GRUB</li>
+                <li>Prise r&#233;seau : Installer et configurer une prise r&#233;seau RJ45 mâle/femelle</li>
+                <li>Phishing : Reconna&#206;tre une tentative d&#146;hameçonnage et savoir comment l&#146;&#233;viter</li>
+                <li>Python : D&#233;velopper diverses applications, comme un programme de mise &#224; jour de logiciels ou un script simple</li>
+            </ul>
+        </section>
+
+        <section id="activities" class="activity-section">
+            <h2>Mes Fiches d&#146;Activit&#233;</h2>
+
+            <div class="activity-item">
+                <h3><a href="https://docs.google.com/document/d/1JxFOCqzlvmutF1kwA5iUWbC6iNflOHV-J-91bs1grvQ/edit?usp=sharing" target="_blank">Fiche d&#146;activit&#233; : 11/02/25 Ajout et configuration d&#146;une douchette</a></h3>
+                <p>Il y a de vieilles douchettes dans les caisses du magasin pour scanner les articles. Nous avons dû les remplacer par des nouvelles et les configurer sur l&#146;unit&#233; principale de la caisse.</p>
+            </div>
+
+            <div class="activity-item">
+                <h3><a href="https://docs.google.com/document/d/1gzvhnqUFonPtD0dII2DAq4Qe9cHkfR4U9LCRXd2zsIo/edit?usp=sharing" target="_blank">Fiche d&#146;activit&#233; : 21/10/24 Nettoyage de PC fixe</a></h3>
+                <p>Des ajouts de postes de travail ou des remplacements pour diff&#233;rents probl&#232;mes. J&#146;ai donc &#233;t&#233; amen&#233; &#224; r&#233;aliser ce projet pour nettoyer diff&#233;rents postes, les remplacer ou l&#146;ajouter &#224; certains endroits.</p>
+            </div>
+
+            <div class="activity-item">
+                <h3><a href="https://docs.google.com/document/d/1GoyaKQYpkvIJmuMJx_74BtkXhYT9wbY-A6jeNbxQarM/edit?usp=sharing" target="_blank">Fiche d&#146;activit&#233; : 25/09/24 - 26/09/24- Brancher une antenne &#224; des routeurs avec un switch PoE.</a></h3>
+                <p>Cette proc&#233;dure a &#233;t&#233; r&#233;alis&#233;e pour alimenter et relier les routeurs &#224; un switch PoE, en utilisant les signaux d&#146;antenne wifi.</p>
+            </div>
+            <div class="activity-item">
+                <h3><a href="https://docs.google.com/document/d/13-QX7pmj2M0bazjC4gAG8TXcXPrD5dY1A4Lg0vMN4Qk/edit?usp=sharing" target="_blank">Fiche d&#146;activit&#233; : 02/10/24 - Mise en place de deux diff&#233;rent syst&#232;me d&#146;exploitation avec grub</a></h3>
+                <p>J&#146;ai &#233;t&#233; amen&#233; &#224; r&#233;aliser se projet, pour mettre en place 2 types de syst&#232;me d&#146;exploitation comme windows 10 pro et Linux mint. Donc nous allons utilis&#233; “dual boot” pour mettre en place deux syst&#232;mes d&#146;exploitations expr&#232;s pour linux et windows pour une compatibilit&#233; plus fiable. mais pour &#233;viter que le disque interne ait des problèmes nous avons dû le dupliquer  (cloner, avec un bo&#206;tier qui comporte un emplacement A pour le principale et un emplacement B, pour celui auquel il va cloner.) </p>
+            </div>
+            <div class="activity-item">
+                <h3><a href="https://docs.google.com/document/d/18pKD2nAaDnoOJZxCTv21Rf-3ZOR-8dR4eNW4oH3SCAw/edit?usp=sharing" target="_blank">Fiche d&#146;activit&#233; : 16/09/24 Mise en Place d&#146;un Environnement Windows et Installation Logicielle</a></h3>
+                <p>Ce projet a &#233;t&#233; r&#233;alis&#233; dans le but d&#146;apprendre &#224; installer Windows 10 Pro sur une machine, en utilisant une cl&#233; USB bootable avec le logiciel “ Ventoy ”. Ensuite, nous avons recherch&#233; et install&#233; divers logiciels, que nous utiliserons un peu plus tard.</p>
+            </div>
+            <div class="activity-item">
+                <h3><a href="https://docs.google.com/document/d/1KW3qrFb2LU93tABVb_yVvm-_Uzh1dB6QMXou81kPdhY/edit?usp=sharing" target="_blank">Fiche d&#146;activit&#233; : 5/11/24 Installer une machine virtuelle</a></h3>
+                <p>Ce 15/11/24 nous allons comprendre comment fonctionne la virtualisation, de comment l&#146;installer, comment ça marche etc… .  Il existe plusieurs type de virtualisation</p>            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>2024-2025 Mathias JAVIERRE - &copy;</p>
+    </footer>
+</body>
+</html>
