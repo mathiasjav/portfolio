@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets | Mathias JAVIERRE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #e94560;
+            --light-color: #f1f1f1;
+            --text-color: #e0e0e0;
+            --text-light: #ffffff;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 12px;
+            --glow: 0 0 15px rgba(233, 69, 96, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Effet de vagues en arrière-plan */
+        .wave-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: -2;
+            overflow: hidden;
+            opacity: 0.6;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 200px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg"><path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" fill="%23e94560" opacity=".25"/></svg>');
+            background-size: 100% 100%;
+            animation: wave 30s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: -5s;
+            opacity: 0.4;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Particules flottantes */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: linear-gradient(45deg, #e94560, #0f3460);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* En-tête */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #e94560, #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.9;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(45deg, var(--accent-color), #3498db);
+            color: white;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: 'Rajdhani', sans-serif;
+            box-shadow: var(--shadow);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #3498db, var(--accent-color));
+        }
+
+        /* Conteneur vidéo */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: rgba(22, 33, 62, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+            border-radius: var(--border-radius);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(44, 62, 80, 0.4), rgba(26, 26, 46, 0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .video-overlay h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-overlay p {
+            font-size: 1.1rem;
+            max-width: 500px;
+            opacity: 0.9;
+        }
+
+        /* Grille des projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(22, 33, 62, 0.6);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(22, 33, 62, 0.8);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .project-content h3 {
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .project-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background-color: rgba(52, 152, 219, 0.2);
+            color: var(--secondary-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            background-color: rgba(233, 69, 96, 0.3);
+            border-color: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(45deg, var(--accent-color), #3498db);
+            color: white;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            flex: 1;
+            text-align: center;
+            font-family: 'Rajdhani', sans-serif;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-link:hover {
+            background: linear-gradient(45deg, #3498db, var(--accent-color));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-link.secondary {
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .project-link.secondary:hover {
+            background: linear-gradient(45deg, var(--accent-color), #3498db);
+            color: white;
+        }
+
+        .project-details {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item {
+            margin-bottom: 0.5rem;
+            display: flex;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            min-width: 120px;
+            color: var(--accent-color);
+        }
+
+        .challenges {
+            background-color: rgba(231, 76, 60, 0.1);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .challenges h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* Modal pour agrandir les images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 5vh;
+            border-radius: var(--border-radius);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: var(--text-light);
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--accent-color);
+        }
+
+        /* Pied de page */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .video-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Effet de particules -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Effet de vagues -->
+    <div class="wave-bg">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <!-- Modal pour agrandir les images -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Mes Projets</h1>
+            <p>Découvrez mes réalisations techniques et créatives</p>
+            <a href="../index.html" class="back-button">← Retour au Portfolio</a>
+        </header>
+
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="../Video/Projetue5.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+            <div class="video-overlay">
+                <h2>Création avec Unreal Engine 5</h2>
+                <p>Chaque projet est une opportunité d'apprendre et d'innover</p>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Projet Stokara -->
+            <div class="project-card">
+                <div class="project-image" onclick="openModal('../stokara.png')">
+                    <img src=".././image/stokara.png" alt="Projet Stokara">
+                </div>
+                <div class="project-content">
+                    <h3>Projet Entreprise : Stokara</h3>
+                    <div class="project-meta">
+                        <span>En cours (6 mois)</span>
+                        <span>Gestion, Stock, Qualité</span>
+                    </div>
+                    <p>Développement d'un système de gestion des stocks, des emplacements et des schémas d'entreprise pour optimiser la logistique et la qualité.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Gestion de Stock</span>
+                        <span class="tech-tag">Logistique</span>
+                        <span class="tech-tag">Qualité</span>
+                        <span class="tech-tag">Schéma Entreprise</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Durée:</span>
+                            <span>6 mois</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Statut:</span>
+                            <span>En développement</span>
+                        </div>
+                    </div>
+                    <div class="challenges">
+                        <h4>Défis Relevés</h4>
+                        <p>Intégration des schémas d'entreprise et collaboration avec les équipes pour répondre aux besoins métiers.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://docs.google.com/spreadsheets/d/1z4BD1Y4bDzEAsqjk4BGXNb_ZC9mTgPYT/edit?usp=sharing" class="project-link" target="_blank">Voir le projet</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet Portfolio Personnel -->
+            <div class="project-card">
+                <div class="project-image" onclick="openModal('../Portfolio.png')">
+                    <img src=".././image/Portfolio.png" alt="Portfolio Personnel">
+                </div>
+                <div class="project-content">
+                    <h3>Portfolio Personnel</h3>
+                    <div class="project-meta">
+                        <span>Décembre 2025</span>
+                        <span>HTML, CSS, JavaScript</span>
+                    </div>
+                    <p>Création d'un portfolio interactif pour présenter mes compétences et projets avec un design moderne et responsive.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Durée:</span>
+                            <span>4 mois</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Statut:</span>
+                            <span>Terminé</span>
+                        </div>
+                    </div>
+                    <div class="challenges">
+                        <h4>Défis Relevés</h4>
+                        <p>Intégration d'animations CSS complexes tout en maintenant des performances optimales sur tous les appareils.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Voir en ligne</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet The Chair of Fear -->
+            <div class="project-card">
+                <div class="project-image" onclick="openModal('../GAME1.png')">
+                    <img src=".././image/GAME1.png" alt="The Chair of Fear">
+                </div>
+                <div class="project-content">
+                    <h3>The Chair of Fear</h3>
+                    <div class="project-meta">
+                        <span>2024</span>
+                        <span>Unreal Engine 5</span>
+                    </div>
+                    <p>Jeu d'horreur créé en 7h32 pour un game jam. Trouvez des indices pour ouvrir la porte et vous échapper.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unreal Engine</span>
+                        <span class="tech-tag">Game Design</span>
+                        <span class="tech-tag">Horreur</span>
+                        <span class="tech-tag">Game Jam</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Durée:</span>
+                            <span>7h32</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Statut:</span>
+                            <span>Publié</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://eltartice.itch.io/the-chair-of-fear" class="project-link" target="_blank">Jouer</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet Glimmer of Escape -->
+            <div class="project-card">
+                <div class="project-image" onclick="openModal('../game2.png')">
+                    <img src=".././image/game2.png" alt="Glimmer of Escape">
+                </div>
+                <div class="project-content">
+                    <h3>Glimmer of Escape</h3>
+                    <div class="project-meta">
+                        <span>2024</span>
+                        <span>Unreal Engine 5</span>
+                    </div>
+                    <p>Un rêve cauchemardesque où vous devez échapper à un monstre pour retourner dans le monde réel.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unreal Engine</span>
+                        <span class="tech-tag">Narration</span>
+                        <span class="tech-tag">Aventure</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Durée:</span>
+                            <span>Projet court</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Statut:</span>
+                            <span>Publié</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://eltartice.itch.io/glimmer-of-escape" class="project-link" target="_blank">Jouer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Mathias JAVIERRE - Portfolio © 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        // Animation des cartes au défilement
+        const projectCards = document.querySelectorAll('.project-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        projectCards.forEach(card => {
+            card.style.animationPlayState = 'paused';
+            observer.observe(card);
+        });
+
+        // Effet de parallaxe sur la vidéo
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const video = document.querySelector('.video-container');
+            if (video) {
+                video.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+
+        // Particules flottantes
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 80;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const size = Math.random() * 3 + 1;
+            const duration = Math.random() * 20 + 10;
+            const delay = Math.random() * 20;
+            particle.style.left = `${posX}%`;
+            particle.style.top = `${posY}%`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${delay}s`;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Modal pour agrandir les images
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.querySelector(".close");
+
+        function openModal(imgSrc) {
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Lecture automatique de la vidéo
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            if (video) {
+                video.muted = true;
+                video.play().catch(e => console.log("Autoplay prevented:", e));
+            }
+        });
+    </script>
+</body>
+</html>
