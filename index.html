@@ -151,7 +151,7 @@
         }
         /* En-tête et photo de profil */
         header {
-            padding: 4rem 2rem 2rem;
+            padding: 2rem 1rem;
             text-align: center;
             position: relative;
             animation: fadeIn 1.2s ease-out;
@@ -168,14 +168,14 @@
             margin: 0 auto;
         }
         .profile-photo {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--accent-color);
             box-shadow: var(--shadow), var(--glow);
             transition: var(--transition);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             cursor: pointer;
             animation: pulse 3s infinite alternate;
         }
@@ -185,7 +185,7 @@
         }
         .profile-info h1 {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 2.8rem;
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             background: linear-gradient(90deg, #e94560, #ffffff);
@@ -195,7 +195,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .profile-info p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin-bottom: 0.3rem;
             color: var(--text-light);
             opacity: 0.9;
@@ -277,6 +277,23 @@
             background-color: rgba(255, 255, 255, 0.05);
             color: var(--accent-color);
             border-left: 3px solid var(--accent-color);
+        }
+        /* Menu hamburger pour mobile */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 1rem;
+            position: absolute;
+            right: 1rem;
+            top: 0.5rem;
+            z-index: 101;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            margin: 5px;
+            transition: var(--transition);
         }
         /* Conteneur principal */
         .container {
@@ -481,6 +498,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
         .activity-item::before {
             content: '';
@@ -509,6 +527,7 @@
             display: block;
             transition: var(--transition);
             font-family: 'Rajdhani', sans-serif;
+            text-decoration: none;
         }
         .activity-item a:hover {
             color: var(--text-light);
@@ -518,7 +537,7 @@
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
         }
-        /* Attestations & Diplômes (style cohérent avec le site) */
+        /* Attestations & Diplômes */
         .certificates-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -609,13 +628,60 @@
             }
         }
         @media (max-width: 768px) {
-            .profile-container {
+            /* Menu hamburger visible */
+            .hamburger {
+                display: block;
+            }
+            /* Masquer le menu normal */
+            .navbar {
+                display: none;
                 flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(26, 26, 46, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 1rem 0;
+                box-shadow: var(--shadow);
+            }
+            .navbar.active {
+                display: flex;
+            }
+            .navbar li {
+                width: 100%;
                 text-align: center;
+                margin: 0.5rem 0;
             }
-            .profile-info {
-                margin-top: 1.5rem;
+            .navbar > li > a {
+                padding: 0.8rem;
+                font-size: 1rem;
             }
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                display: none;
+                background-color: rgba(20, 20, 40, 0.8);
+            }
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            /* Header */
+            header {
+                padding: 1.5rem 1rem;
+            }
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+            .profile-info h1 {
+                font-size: 1.8rem;
+            }
+            /* Timeline */
             .timeline::before {
                 left: 1rem;
             }
@@ -633,14 +699,12 @@
             .timeline-item:nth-child(even) .timeline-content::after {
                 display: none;
             }
+            /* Grilles */
             .skills-list {
                 grid-template-columns: 1fr;
             }
             .certificates-grid {
                 grid-template-columns: 1fr;
-            }
-            .navbar {
-                flex-direction: column;
             }
         }
     </style>
@@ -671,6 +735,12 @@
             <path d="M12 20L12 4M12 4L5 11M12 4L19 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </div>
+    <!-- Menu hamburger -->
+    <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <header>
         <div class="profile-container">
             <img src="./image/PP.jpg"
@@ -685,7 +755,7 @@
         </div>
     </header>
     <nav>
-        <ul class="navbar">
+        <ul class="navbar" id="navbar">
             <li class="dropdown">
                 <a href="javascript:void(0)">CV</a>
                 <div class="dropdown-content">
@@ -749,30 +819,30 @@
                 </div>
             </div>
         </section>
-<section id="skills">
-    <h2>Mes Compétences</h2>
-    <h3><i class="fas fa-seedling"></i> Jardinage & Espaces Verts</h3>
-    <ul class="skills-list">
-        <li><i class="fas fa-cut"></i> Utilisation de débroussailleuse</li>
-        <li><i class="fas fa-lawn-mower"></i> Utilisation de tondeuse</li>
-        <li><i class="fas fa-tree"></i> Utilisation de tronçonneuse</li>
-        <li><i class="fas fa-leaf"></i> Entretien des espaces verts</li>
-    </ul>
-    <h3><i class="fas fa-code"></i> Développement Web</h3>
-    <ul class="skills-list">
-        <li><i class="fab fa-html5"></i> HTML5 – Structure et sémantique</li>
-        <li><i class="fab fa-css3-alt"></i> CSS3 – Flexbox, Grid</li>
-    </ul>
-    <h3><i class="fas fa-network-wired"></i> Informatique & Réseaux</h3>
-    <ul class="skills-list">
-        <li><i class="fas fa-wifi"></i> Configuration IPv4 (DHCP/Statique)</li>
-        <li><i class="fas fa-desktop"></i> Montage et maintenance PC</li>
-        <li><i class="fab fa-windows"></i> <i class="fab fa-linux"></i> Installation OS (Windows/Linux + GRUB)</li>
-        <li><i class="fas fa-ethernet"></i> Câblage réseau (RJ45)</li>
-        <li><i class="fas fa-shield-alt"></i> Sécurité – Détection de phishing</li>
-        <li><i class="fab fa-python"></i> Python – Scripts et automatisation</li>
-    </ul>
-</section>
+        <section id="skills">
+            <h2>Mes Compétences</h2>
+            <h3><i class="fas fa-seedling"></i> Jardinage & Espaces Verts</h3>
+            <ul class="skills-list">
+                <li><i class="fas fa-cut"></i> Utilisation de débroussailleuse</li>
+                <li><i class="fas fa-lawn-mower"></i> Utilisation de tondeuse</li>
+                <li><i class="fas fa-tree"></i> Utilisation de tronçonneuse</li>
+                <li><i class="fas fa-leaf"></i> Entretien des espaces verts</li>
+            </ul>
+            <h3><i class="fas fa-code"></i> Développement Web</h3>
+            <ul class="skills-list">
+                <li><i class="fab fa-html5"></i> HTML5 – Structure et sémantique</li>
+                <li><i class="fab fa-css3-alt"></i> CSS3 – Flexbox, Grid</li>
+            </ul>
+            <h3><i class="fas fa-network-wired"></i> Informatique & Réseaux</h3>
+            <ul class="skills-list">
+                <li><i class="fas fa-wifi"></i> Configuration IPv4 (DHCP/Statique)</li>
+                <li><i class="fas fa-desktop"></i> Montage et maintenance PC</li>
+                <li><i class="fab fa-windows"></i> <i class="fab fa-linux"></i> Installation OS (Windows/Linux + GRUB)</li>
+                <li><i class="fas fa-ethernet"></i> Câblage réseau (RJ45)</li>
+                <li><i class="fas fa-shield-alt"></i> Sécurité – Détection de phishing</li>
+                <li><i class="fab fa-python"></i> Python – Scripts et automatisation</li>
+            </ul>
+        </section>
         <section id="activities">
             <h2>Mes Fiches d'Activité</h2>
             <div class="activity-item">
@@ -842,6 +912,25 @@
         <p>Mathias JAVIERRE – Portfolio © 2025</p>
     </footer>
     <script>
+        // Menu hamburger
+        const hamburger = document.getElementById('hamburger');
+        const navbar = document.getElementById('navbar');
+        hamburger.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            // Animation du hamburger
+            hamburger.classList.toggle('open');
+        });
+        // Gestion des dropdowns en mobile
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
         // Bouton retour en haut
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
