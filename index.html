@@ -458,34 +458,64 @@
             margin-top: 1.5rem;
         }
         .skills-list li {
-            background-color: rgba(52, 152, 219, 0.1);
-            padding: 1rem 1.5rem;
+            background-color: transparent;
+            padding: 0;
             border-radius: var(--border-radius);
             transition: var(--transition);
-            border-left: 4px solid var(--accent-color);
             position: relative;
             overflow: hidden;
             color: var(--text-light);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 100px;
         }
-        .skills-list li::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Effet Flip Card pour les compétences */
+        .skills-list .flip-card {
+            background-color: transparent;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s;
+            perspective: 1000px;
+            border-radius: var(--border-radius);
         }
-        .skills-list li:hover::before {
-            transform: translateX(100%);
+        .skills-list .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: var(--border-radius);
         }
-        .skills-list li:hover {
-            background-color: rgba(52, 152, 219, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        .skills-list li:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .skills-list .flip-card-front,
+        .skills-list .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+        .skills-list .flip-card-front {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--text-light);
+            border-left: 4px solid var(--accent-color);
+        }
+        .skills-list .flip-card-back {
+            background-color: rgba(22, 33, 62, 0.8);
+            transform: rotateY(180deg);
+            overflow: hidden;
+        }
+        .skills-list .flip-card-back img,
+        .skills-list .flip-card-back video {
+            max-width: 200%;
+            max-height: 200%;
+            object-fit: contain;
+            border-radius: 8px;
         }
         /* Fiches d'activité */
         .activity-item {
@@ -776,26 +806,13 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">2020 – 2022</div>
-                        <h3>Collège François Truffaut</h3>
-                        <h4>Saint-Martin-de-Seignanx</h4>
-                        <p>Niveaux 6ème et 5ème. <br>Délégué de classe en 6e<br>ASSR1 Obtenue en 2022</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2022 – 2024</div>
-                        <h3>Collège d'Albret, Dax</h3>
-                        <h4>4ème à 3ème</h4>
-                        <p>Obtention du Brevet des Collèges avec mention Assez Bien.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Janvier 2024</div>
-                        <h3>Stage d'Observation</h3>
-                        <h4>Leclerc du Grand Mail, Saint-Paul-lès-Dax</h4>
-                        <p>Observation et assistance aux tâches quotidiennes en maintenance dans un supermarché.</p>
+                        <div class="timeline-date">2024 – Présent</div>
+                        <h3>Bac Pro SN</h3>
+                        <h4>MFR Pontonx-sur-Adour</h4>
+                        <p>Formation en Systèmes Numériques (Seconde et Première). Apprentissage des réseaux, de la programmation, et de la maintenance informatique.
+                            <br><br>
+                            Déléguer de classe en seconde
+                        </p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -808,13 +825,26 @@
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">2024 – Présent</div>
-                        <h3>Bac Pro SN</h3>
-                        <h4>MFR Pontonx-sur-Adour</h4>
-                        <p>Formation en Systèmes Numériques (Seconde et Première). Apprentissage des réseaux, de la programmation, et de la maintenance informatique.
-                            <br><br>
-                            Déléguer de classe en seconde
-                        </p>
+                        <div class="timeline-date">Janvier 2024</div>
+                        <h3>Stage d'Observation</h3>
+                        <h4>Leclerc du Grand Mail, Saint-Paul-lès-Dax</h4>
+                        <p>Observation et assistance aux tâches quotidiennes en maintenance dans un supermarché.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 – 2024</div>
+                        <h3>Collège d'Albret, Dax</h3>
+                        <h4>4ème à 3ème</h4>
+                        <p>Obtention du Brevet des Collèges avec mention Assez Bien.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 – 2022</div>
+                        <h3>Collège François Truffaut</h3>
+                        <h4>Saint-Martin-de-Seignanx</h4>
+                        <p>Niveaux 6ème et 5ème. <br>Délégué de classe en 6e<br>ASSR1 Obtenue en 2022</p>
                     </div>
                 </div>
             </div>
@@ -823,24 +853,156 @@
             <h2>Mes Compétences</h2>
             <h3><i class="fas fa-seedling"></i> Jardinage & Espaces Verts</h3>
             <ul class="skills-list">
-                <li><i class="fas fa-cut"></i> Utilisation de débroussailleuse</li>
-                <li><i class="fas fa-lawn-mower"></i> Utilisation de tondeuse</li>
-                <li><i class="fas fa-tree"></i> Utilisation de tronçonneuse</li>
-                <li><i class="fas fa-leaf"></i> Entretien des espaces verts</li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-cut"></i> Utilisation de débroussailleuse
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/debrouissailleuse.jpg" alt="Débroussailleuse">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-lawn-mower"></i> Utilisation de tondeuse
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/tondeuse.jpg" alt="Tondeuse">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-tree"></i> Utilisation de tronçonneuse
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/tronconneuse.jpg" alt="Tronçonneuse">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-leaf"></i> Entretien des espaces verts
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/espaces_verts.jpg" alt="Espaces verts">
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
             <h3><i class="fas fa-code"></i> Développement Web</h3>
             <ul class="skills-list">
-                <li><i class="fab fa-html5"></i> HTML5 – Structure et sémantique</li>
-                <li><i class="fab fa-css3-alt"></i> CSS3 – Flexbox, Grid</li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fab fa-html5"></i> HTML5 – Structure et sémantique
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/html5.png" alt="HTML5">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fab fa-css3-alt"></i> CSS3 – Flexbox, Grid
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/css3.png" alt="CSS3">
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
             <h3><i class="fas fa-network-wired"></i> Informatique & Réseaux</h3>
             <ul class="skills-list">
-                <li><i class="fas fa-wifi"></i> Configuration IPv4 (DHCP/Statique)</li>
-                <li><i class="fas fa-desktop"></i> Montage et maintenance PC</li>
-                <li><i class="fab fa-windows"></i> <i class="fab fa-linux"></i> Installation OS (Windows/Linux + GRUB)</li>
-                <li><i class="fas fa-ethernet"></i> Câblage réseau (RJ45)</li>
-                <li><i class="fas fa-shield-alt"></i> Sécurité – Détection de phishing</li>
-                <li><i class="fab fa-python"></i> Python – Scripts et automatisation</li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-wifi"></i> Configuration IPv4 (DHCP/Statique)
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/IPV4.png" alt="Montage PC">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-desktop"></i> Montage et maintenance PC
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/montage_pc.png" alt="Montage PC">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fab fa-windows"></i> <i class="fab fa-linux"></i> Installation OS (Windows/Linux + GRUB)
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/install_os.jpg" alt="Installation OS">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-ethernet" ></i> Câblage réseau (RJ45)
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/CablageRJ45.jpg" alt="Câblage RJ45">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-shield-alt"></i> Sécurité – Détection de phishing
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/securite_phishing.jpg" alt="Sécurité Phishing">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fab fa-python"></i> Python – Scripts et automatisation
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="./image/python.jpg" alt="Python">
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </section>
         <section id="activities">
@@ -917,7 +1079,6 @@
         const navbar = document.getElementById('navbar');
         hamburger.addEventListener('click', () => {
             navbar.classList.toggle('active');
-            // Animation du hamburger
             hamburger.classList.toggle('open');
         });
         // Gestion des dropdowns en mobile
@@ -997,6 +1158,16 @@
                 modal.style.display = "none";
             }
         }
+        // Lecture automatique des vidéos au survol
+        document.querySelectorAll('.flip-card-back video').forEach(video => {
+            video.addEventListener('mouseover', function() {
+                this.play();
+            });
+            video.addEventListener('mouseout', function() {
+                this.pause();
+                this.currentTime = 0;
+            });
+        });
     </script>
 </body>
 </html>
