@@ -329,6 +329,7 @@
       gap: 0.5rem;
       list-style: none;
       flex-wrap: wrap;
+      text-decoration: none;
     }
     .navbar > li > a {
       display: block;
@@ -344,6 +345,7 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
+      text-decoration: none;
     }
     .navbar > li > a::before {
       content: "";
@@ -356,6 +358,7 @@
       transform: translateX(-100%);
       transition: transform 0.4s ease;
       z-index: -1;
+      text-decoration: none;
     }
     .navbar > li > a:hover::before,
     .navbar > li > a:focus-visible::before {
@@ -731,6 +734,8 @@
       cursor: pointer;
       transition: color 0.25s, transform 0.2s;
       z-index: 3001;
+      border-radius: 10px;
+      background-color: #0a0a1a;
     }
     .close:hover {
       color: var(--accent-color);
@@ -858,6 +863,7 @@
         transition: transform 0.35s ease;
         padding: 1.2rem;
         background: rgba(26, 26, 46, 0.99);
+        
       }
       nav.active {
         transform: translateY(0);
@@ -866,15 +872,18 @@
         flex-direction: column;
         align-items: center;
         gap: 0.7rem;
+        text-decoration: none;
       }
       .navbar > li {
         width: 100%;
         text-align: center;
+        text-decoration: none;
       }
       .navbar > li > a {
         padding: 1.1rem;
         border-radius: 10px;
         font-size: 1.05rem;
+        text-decoration: none;
       }
       .dropdown-content {
         position: static;
@@ -918,6 +927,8 @@
         scroll-behavior: auto;
       }
     }
+
+
   </style>
 </head>
 <body>
@@ -1490,6 +1501,7 @@ Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs 
         link.style.textShadow = 'none';
       });
     });
+
   </script>
 </body>
 </html>
