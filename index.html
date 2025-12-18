@@ -370,6 +370,11 @@
       background: rgba(255, 255, 255, 0.05);
       outline: none;
     }
+    .navbar > li > a.active {
+      color: var(--accent-color);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 8px rgba(233, 69, 96, 0.3);
+    }
     .dropdown-content {
       position: absolute;
       top: 100%;
@@ -400,6 +405,7 @@
       padding: 0 1.5rem;
     }
     section {
+      display: none;
       background: var(--card-bg-strong);
       border-radius: var(--border-radius);
       border: var(--glass-border);
@@ -409,10 +415,15 @@
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(var(--blur));
-      transition: var(--transition);
-      transform: perspective(1000px) translateZ(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      opacity: 0;
+      transform: translateY(20px);
     }
-  
+    section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
     section::before {
       content: "";
       position: absolute;
@@ -863,7 +874,6 @@
         transition: transform 0.35s ease;
         padding: 1.2rem;
         background: rgba(26, 26, 46, 0.99);
-        
       }
       nav.active {
         transform: translateY(0);
@@ -928,7 +938,46 @@
       }
     }
 
+    /* Images décoratives */
+    .decorative-img {
+      position: fixed;
+      z-index: -1;
+      opacity: 0.7;
+      pointer-events: none;
 
+    }
+    .decorative-img-1 {
+      bottom: -1%;
+      left: -10%;
+      width: 390px;
+      height: 390px;
+      transform: rotate(-15deg);
+    }
+    .decorative-img-2 {
+      top: -6%;
+      right: -5%;
+      width: 300px;
+      height: 300px;
+      transform: rotate(20deg);
+    }
+    .decorative-img-3 {
+      bottom: 0%;
+      right: -50%;
+      width: 1140px;
+      height: 1140px;
+    }
+    .decorative-img-4 {
+      top: 0.1%;
+      right: 1%;
+      width: 300px;
+      height: 300px;
+      transform: rotate(-12deg);
+    }
+    mark {
+      background-color: rgba(233, 69, 96, 0.3);
+      padding: 0 4px;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
@@ -947,6 +996,11 @@
     <div class="line"></div>
   </div>
   <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <!-- Images décoratives -->
+
+  
+  
 
   <!-- Modales -->
   <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -1001,7 +1055,7 @@
   <!-- Navigation -->
   <nav role="navigation" aria-label="Navigation principale">
     <ul class="navbar" id="navbar">
-      <li><a href="#presentation" class="nav-close">Ma Présentation</a></li>
+      <li><a href="#presentation" class="nav-close active">Ma Présentation</a></li>
       <li><a href="#pbacpro" class="nav-close">Présentation Bac Pro Ciel</a></li>
       <li><a href="#cv" class="nav-close">Mon Parcours</a></li>
       <li><a href="#skills" class="nav-close">Compétences</a></li>
@@ -1014,38 +1068,43 @@
   <!-- Contenu principal -->
   <main id="main" class="container" tabindex="-1" role="main">
     <!-- Section "Ma Présentation" -->
-    <section id="presentation" aria-labelledby="presentationTitle">
+    <section id="presentation" aria-labelledby="presentationTitle" class="active">
+        <img src="./image/mp.png" alt="Éléments techniques décoratifs" class="decorative-img decorative-img-1">
       <h2 id="presentationTitle">Ma Présentation</h2>
       <div style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem;">
         <p>
-          Bonjour et bienvenue sur mon portfolio ! Je m’appelle Mathias JAVIERRE, j’ai <span id="age">0</span> ans né le 5 mars 2008 je suis
-passionné par l’informatique et le développement. Depuis plusieurs
-années, je m’intéresse à la création de jeux vidéo, au développement web
-et à la programmation en Python et HTML. </p>
-<p>J’aime apprendre par moi-même et je m’adapte facilement aux nouvelles situations, notamment
-lorsqu’il s’agit de résoudre des problèmes techniques. De nature calme et
-réservée, je suis sérieux, curieux et j’aime comprendre comment les choses
-fonctionnent.
+          Bonjour et bienvenue sur mon portfolio ! Je m'appelle Mathias JAVIERRE, <mark>j'ai <span id="age">0</span> ans né le 5 mars 2008</mark> je suis
+          passionné par l'informatique et le développement. Depuis plusieurs
+          années, je m'intéresse à la création de jeux vidéo, au développement web
+          et à la programmation en Python et HTML.
+        </p>
+        <p>
+          J'aime apprendre par moi-même et je m'adapte facilement aux nouvelles situations, notamment
+          lorsqu'il s'agit de résoudre des problèmes techniques. De nature calme et
+          réservée, je suis sérieux, curieux et j'aime comprendre comment les choses
+          fonctionnent.
         </p>
       </div>
     </section>
 
-
-    <section id="pbacpro" class="contener" tabindex="-1" role="">
+    <section id="pbacpro" class="container" tabindex="-1" role="">
+      <img src="./image/bpc.png" alt="Éléments techniques décoratifs" class="decorative-img decorative-img-2">
       <h2 id="presentationBacProCiel">Présentation du Bac Pro Ciel</h2>
       <div style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem;">
         <p>
-          Le <b>Bac Professionnel CIEL</b>, qui signifie <b>Cybersécurité, Informatique et Réseaux, Électronique,</b> est une formation en trois ans destinée aux élèves intéressés par les métiers du numérique. Ce bac professionnel remplace l’ancien Bac Pro SN et propose une approche moderne centrée sur l’informatique, les réseaux et la sécurité numérique.
-</p><br><p>
-Cette formation permet <b>d’apprendre</b> à installer, configurer et dépanner des équipements informatiques, des systèmes électroniques et des réseaux. Les élèves découvrent également les bases de la cybersécurité, comme la protection des données, la sécurisation d’un réseau ou l’analyse des risques informatiques. Le Bac Pro CIEL est donc un mélange entre informatique, électronique et sécurité.
-</p><br><p>
-Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs et de switchs, utilisation de Windows et Linux, programmation simple, diagnostic de pannes, et manipulation de matériel électronique ou d’objets connectés. Il inclut aussi plusieurs semaines de stage en entreprise pour se familiariser avec le milieu professionnel.
-</p><br><p>
-<i>En résumé, le Bac Pro CIEL forme des techniciens polyvalents capables d’intervenir sur l’informatique, les réseaux et les systèmes électroniques, tout en intégrant les enjeux de la cybersécurité. C’est une formation idéale pour ceux qui veulent travailler dans le numérique ou poursuivre des études dans ces domaines.</i>
+          Le <b>Bac Professionnel CIEL</b>, qui signifie <b>Cybersécurité, Informatique et Réseaux, Électronique,</b> est une formation en trois ans destinée aux élèves intéressés par les métiers du numérique. Ce bac professionnel remplace l'ancien Bac Pro SN et propose une approche moderne centrée sur l'informatique, les réseaux et la sécurité numérique.
+        </p><br><p>
+          Cette formation permet <b>d'apprendre</b> à installer, configurer et dépanner des équipements informatiques, des systèmes électroniques et des réseaux. Les élèves découvrent également les bases de la cybersécurité, comme la protection des données, la sécurisation d'un réseau ou l'analyse des risques informatiques. Le Bac Pro CIEL est donc un mélange entre informatique, électronique et sécurité.
+        </p><br><p>
+          Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs et de switchs, utilisation de Windows et Linux, programmation simple, diagnostic de pannes, et manipulation de matériel électronique ou d'objets connectés. Il inclut aussi plusieurs semaines de stage en entreprise pour se familiariser avec le milieu professionnel.
+        </p><br><p>
+          <i>En résumé, le Bac Pro CIEL forme des techniciens polyvalents capables d'intervenir sur l'informatique, les réseaux et les systèmes électroniques, tout en intégrant les enjeux de la cybersécurité. C'est une formation idéale pour ceux qui veulent travailler dans le numérique ou poursuivre des études dans ces domaines.</i>
         </p>
     </section>
+
     <!-- Section "Mon Parcours" -->
     <section id="cv" aria-labelledby="cvTitle">
+    <img src="./image/parc.png" alt="Éléments techniques décoratifs" class="decorative-img decorative-img-3">
       <h2 id="cvTitle">Mon Parcours</h2>
       <div class="timeline">
         <div class="timeline-grid">
@@ -1099,6 +1158,7 @@ Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs 
 
     <!-- Section "Mes Compétences" -->
     <section id="skills" aria-labelledby="skillsTitle">
+      <img src="./image/comp.png" alt="Éléments techniques décoratifs" class="decorative-img decorative-img-4">
       <h2 id="skillsTitle">Mes Compétences</h2>
       <h3><i class="fas fa-code" aria-hidden="true"></i> Développement Web</h3>
       <ul class="skills-list">
@@ -1109,7 +1169,7 @@ Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs 
                 <i class="fab fa-html5" aria-hidden="true"></i>&nbsp; HTML5 – Structure et sémantique
               </div>
               <div class="flip-card-back">
-                <img src="./image/html5.png" alt="Logo HTML5"  />
+                <img src="./image/html5.png" alt="Logo HTML5" />
               </div>
             </div>
           </div>
@@ -1121,7 +1181,7 @@ Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs 
                 <i class="fab fa-css3-alt" aria-hidden="true"></i>&nbsp; CSS3 – Flexbox, Grid
               </div>
               <div class="flip-card-back">
-                <img src="./image/css3.png" alt="Logo CSS3"  />
+                <img src="./image/css3.png" alt="Logo CSS3" />
               </div>
             </div>
           </div>
@@ -1297,6 +1357,37 @@ Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs 
       });
     });
 
+    // Gestion de l'affichage des sections
+    function showSection(sectionId) {
+      $$('main section').forEach(section => {
+        section.classList.remove('active');
+      });
+      $$('.navbar a').forEach(link => {
+        link.classList.remove('active');
+      });
+      const section = $(`#${sectionId}`);
+      const link = $(`.navbar a[href="#${sectionId}"]`);
+      if (section && link) {
+        section.classList.add('active');
+        link.classList.add('active');
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Écouteurs pour la navigation
+    $$('.navbar a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        showSection(targetId);
+      });
+    });
+
+    // Affiche la première section par défaut au chargement
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('presentation');
+    });
+
     // Particules dynamiques
     const particlesContainer = $('#particles');
     const particleCount = 100;
@@ -1453,9 +1544,9 @@ Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs 
         }
       });
       navLinks.forEach(a => {
-        a.removeAttribute('aria-current');
+        a.classList.remove('active');
         if (a.getAttribute('href') === '#' + current) {
-          a.setAttribute('aria-current', 'page');
+          a.classList.add('active');
         }
       });
     };
@@ -1501,7 +1592,6 @@ Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs 
         link.style.textShadow = 'none';
       });
     });
-
   </script>
 </body>
 </html>
