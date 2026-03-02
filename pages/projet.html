@@ -6,287 +6,419 @@
     <title>Mes Projets | Mathias JAVIERRE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #1a1a2e;
-            --secondary-color: #16213e;
-            --accent-color: #e94560;
-            --light-color: #f1f1f1;
-            --text-color: #e0e0e0;
-            --text-light: #ffffff;
-            --shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --border-radius: 12px;
-            --glow: 0 0 15px rgba(233, 69, 96, 0.3);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #14141f;
+            --primary: #e94560;
+            --primary-light: #ff6b81;
+            --text-light: #ffffff;
+            --text-gray: #b0b0c0;
+            --accent-1: #7000ff;
+            --accent-2: #00ffaa;
+            --gradient: linear-gradient(135deg, var(--primary), var(--accent-1));
+            --gradient-hover: linear-gradient(135deg, var(--accent-1), var(--primary));
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --border-glow: 0 0 0 1px rgba(233, 69, 96, 0.2);
+            --border-radius: 24px;
+            --border-radius-sm: 16px;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--primary-color);
             overflow-x: hidden;
+            position: relative;
             min-height: 100vh;
         }
 
-        /* Effet de vagues en arrière-plan */
-        .wave-bg {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 200px;
-            z-index: -2;
-            overflow: hidden;
-            opacity: 0.6;
-        }
-
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 200px;
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg"><path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" fill="%23e94560" opacity=".25"/></svg>');
-            background-size: 100% 100%;
-            animation: wave 30s linear infinite;
-        }
-
-        .wave:nth-child(2) {
-            animation-delay: -5s;
-            opacity: 0.4;
-        }
-
-        @keyframes wave {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Particules flottantes */
-        .particles {
+        /* Grille de fond */
+        .grid-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(233, 69, 96, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(233, 69, 96, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
             pointer-events: none;
         }
 
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: linear-gradient(45deg, #e94560, #0f3460);
+        /* Particules lumineuses */
+        .light-particle {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at center, rgba(233, 69, 96, 0.15) 0%, transparent 70%);
             border-radius: 50%;
-            opacity: 0.6;
-            animation: float linear infinite;
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+            animation: floatParticle 25s infinite alternate ease-in-out;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        .particle-1 {
+            top: 10%;
+            left: 5%;
+            background: radial-gradient(circle at center, rgba(233, 69, 96, 0.2) 0%, transparent 70%);
         }
 
-        /* Conteneur principal */
+        .particle-2 {
+            bottom: 10%;
+            right: 5%;
+            background: radial-gradient(circle at center, rgba(112, 0, 255, 0.2) 0%, transparent 70%);
+            animation-delay: -8s;
+            width: 500px;
+            height: 500px;
+        }
+
+        .particle-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle at center, rgba(0, 255, 170, 0.1) 0%, transparent 70%);
+            animation-delay: -15s;
+            width: 600px;
+            height: 600px;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(8%, 8%) scale(1.3);
+                opacity: 0.8;
+            }
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
+            position: relative;
         }
 
-        /* En-tête */
-        header {
-            text-align: center;
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            background: rgba(20, 20, 31, 0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--border-glow);
             margin-bottom: 3rem;
-            animation: fadeIn 1.2s ease-out;
+            position: sticky;
+            top: 2rem;
+            z-index: 100;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        header h1 {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 2.8rem;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #e94560, #ffffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.5px;
         }
 
-        header p {
-            font-size: 1.2rem;
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gradient);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px var(--primary);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.5);
+                box-shadow: 0 0 20px var(--primary);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
             color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
-            opacity: 0.9;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .back-button {
-            display: inline-block;
-            padding: 0.6rem 1.5rem;
-            background: linear-gradient(45deg, var(--accent-color), #3498db);
-            color: white;
-            border-radius: var(--border-radius);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            background: rgba(233, 69, 96, 0.1);
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            color: var(--primary);
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            font-family: 'Rajdhani', sans-serif;
-            box-shadow: var(--shadow);
-        }
-
-        .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #3498db, var(--accent-color));
-        }
-
-        /* Conteneur vidéo */
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            background: rgba(22, 33, 62, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
             backdrop-filter: blur(5px);
         }
 
-        .video-container video {
-            width: 100%;
-            display: block;
-            border-radius: var(--border-radius);
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(44, 62, 80, 0.4), rgba(26, 26, 46, 0.8));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .back-button:hover {
+            background: var(--primary);
             color: white;
+            border-color: var(--primary);
+            transform: translateX(-5px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        /* Header */
+        .projects-header {
             text-align: center;
+            padding: 2rem 2rem 4rem;
+            position: relative;
+        }
+
+        .projects-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, var(--accent-1) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .projects-header p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
             padding: 2rem;
-            opacity: 0;
-            transition: var(--transition);
+            background: rgba(20, 20, 31, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 100px;
+            margin: 2rem auto 4rem;
+            max-width: 600px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .video-container:hover .video-overlay {
-            opacity: 1;
+        .stat-item {
+            text-align: center;
         }
 
-        .video-overlay h2 {
+        .stat-value {
             font-size: 2rem;
-            margin-bottom: 1rem;
-            font-family: 'Rajdhani', sans-serif;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Syne', sans-serif;
         }
 
-        .video-overlay p {
-            font-size: 1.1rem;
-            max-width: 500px;
-            opacity: 0.9;
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Grille des projets */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
         }
 
         .project-card {
-            background: rgba(22, 33, 62, 0.6);
+            background: var(--bg-card);
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            animation: fadeInUp 0.8s ease forwards;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
         }
 
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(233, 69, 96, 0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            background: rgba(22, 33, 62, 0.8);
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 30px 50px rgba(233, 69, 96, 0.2);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
         }
 
         .project-image {
-            height: 200px;
+            height: 250px;
             overflow: hidden;
             cursor: pointer;
+            position: relative;
+        }
+
+        .project-image::after {
+            content: '🔍 Cliquer pour agrandir';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: bottom 0.3s;
+        }
+
+        .project-card:hover .project-image::after {
+            bottom: 0;
         }
 
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.6s;
         }
 
         .project-card:hover .project-image img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 2rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-header h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
             color: var(--text-light);
         }
 
-        .project-content h3 {
-            color: var(--text-light);
-            margin-bottom: 0.8rem;
-            font-size: 1.4rem;
-            font-family: 'Rajdhani', sans-serif;
+        .project-year {
+            padding: 0.3rem 1rem;
+            background: rgba(233, 69, 96, 0.2);
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(233, 69, 96, 0.3);
         }
 
         .project-meta {
             display: flex;
-            justify-content: space-between;
+            gap: 1rem;
             margin-bottom: 1rem;
+            color: var(--text-gray);
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
         }
 
-        .project-content p {
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-description {
+            color: var(--text-gray);
             margin-bottom: 1.5rem;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        .project-tech {
+        .tech-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
@@ -294,90 +426,116 @@
         }
 
         .tech-tag {
-            background-color: rgba(52, 152, 219, 0.2);
-            color: var(--secondary-color);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
             font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
+            color: var(--text-gray);
+            transition: all 0.3s;
         }
 
         .tech-tag:hover {
-            background-color: rgba(233, 69, 96, 0.3);
-            border-color: var(--accent-color);
-            color: var(--text-light);
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .project-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .project-stat {
+            text-align: center;
+        }
+
+        .project-stat .label {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-stat .value {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .challenge-box {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(112, 0, 255, 0.1));
+            border-left: 4px solid var(--primary);
+            border-radius: var(--border-radius-sm);
+            margin: 1.5rem 0;
+        }
+
+        .challenge-box h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-family: 'Syne', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .challenge-box p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
         }
 
         .project-links {
             display: flex;
             gap: 1rem;
+            margin-top: 1.5rem;
         }
 
-        .project-link {
-            padding: 0.6rem 1.2rem;
-            background: linear-gradient(45deg, var(--accent-color), #3498db);
-            color: white;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
+        .btn {
             flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
             text-align: center;
-            font-family: 'Rajdhani', sans-serif;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
         }
 
-        .project-link:hover {
-            background: linear-gradient(45deg, #3498db, var(--accent-color));
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-link.secondary {
-            background: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-        }
-
-        .project-link.secondary:hover {
-            background: linear-gradient(45deg, var(--accent-color), #3498db);
+        .btn-primary {
+            background: var(--gradient);
             color: white;
         }
 
-        .project-details {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .btn-primary:hover {
+            background: var(--gradient-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
         }
 
-        .detail-item {
-            margin-bottom: 0.5rem;
-            display: flex;
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
         }
 
-        .detail-label {
-            font-weight: 600;
-            min-width: 120px;
-            color: var(--accent-color);
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
         }
 
-        .challenges {
-            background-color: rgba(231, 76, 60, 0.1);
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            margin-top: 1rem;
-            border-left: 3px solid var(--accent-color);
-        }
-
-        .challenges h4 {
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-            font-family: 'Rajdhani', sans-serif;
-        }
-
-        /* Modal pour agrandir les images */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -386,9 +544,14 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(10px);
             animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content {
@@ -396,73 +559,103 @@
             display: block;
             max-width: 90%;
             max-height: 90%;
-            margin-top: 5vh;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             border-radius: var(--border-radius);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 40px rgba(233, 69, 96, 0.3);
+            border: 2px solid var(--primary);
         }
 
         .close {
             position: absolute;
-            top: 20px;
-            right: 35px;
+            top: 30px;
+            right: 50px;
             color: var(--text-light);
-            font-size: 40px;
-            font-weight: bold;
+            font-size: 50px;
+            font-weight: 300;
             transition: 0.3s;
             cursor: pointer;
+            z-index: 1001;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(233, 69, 96, 0.2);
+            border-radius: 50%;
+            border: 2px solid var(--primary);
         }
 
         .close:hover {
-            color: var(--accent-color);
+            color: var(--primary);
+            transform: rotate(90deg);
+            background: rgba(233, 69, 96, 0.4);
         }
 
-        /* Pied de page */
+        /* Footer */
         footer {
             text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             margin-top: 4rem;
-            padding: 2rem 0;
-            color: rgba(255, 255, 255, 0.7);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         footer p {
-            font-family: 'Rajdhani', sans-serif;
+            color: var(--text-gray);
             font-size: 1rem;
         }
 
+        .footer-highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
-            .container {
+        @media (max-width: 900px) {
+            .container { padding: 1rem; }
+            
+            .projects-header h1 { font-size: 3rem; }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                border-radius: 30px;
                 padding: 1rem;
             }
-
-            header h1 {
-                font-size: 2rem;
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
             }
-
+            
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-
-            .project-links {
+            
+            .stats-bar {
                 flex-direction: column;
+                gap: 1rem;
+                border-radius: 30px;
+                padding: 1.5rem;
             }
-
-            .video-container {
-                max-width: 100%;
+            
+            .close {
+                top: 20px;
+                right: 20px;
+                font-size: 40px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Effet de particules -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Effet de vagues -->
-    <div class="wave-bg">
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
+    <!-- Éléments de fond -->
+    <div class="grid-background"></div>
+    <div class="light-particle particle-1"></div>
+    <div class="light-particle particle-2"></div>
+    <div class="light-particle particle-3"></div>
 
     <!-- Modal pour agrandir les images -->
     <div id="imageModal" class="modal">
@@ -471,58 +664,119 @@
     </div>
 
     <div class="container">
-        <header>
-            <h1>Mes Projets</h1>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-dot"></span>
+                RETOUR Portfolio
+            </div>
+
+            <a href="../index.html" class="back-button">← Retour</a>
+        </nav>
+
+        <!-- Header -->
+        <header class="projects-header">
+            <h1>MES PROJETS</h1>
             <p>Découvrez mes réalisations techniques et créatives</p>
-            <a href="../index.html" class="back-button">← Retour au Portfolio</a>
         </header>
 
-        <div class="video-container">
-            <video autoplay muted loop playsinline>
-                <source src="../Video/Projetue5.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture de vidéos.
-            </video>
-            <div class="video-overlay">
-                <h2>Création avec Unreal Engine 5</h2>
-                <p>Chaque projet est une opportunité d'apprendre et d'innover</p>
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Projets</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">2</div>
+                <div class="stat-label">EN COURS</div>
             </div>
         </div>
 
+        <!-- Grille des projets -->
         <div class="projects-grid">
+
+                        <!-- Projet QYLINE -->
+            <div class="project-card">
+                <div class="project-image" onclick="openModal('.././image/logoqyline.png')">
+                    <img src=".././image/logoqyline.png" alt="Projet QYLINE">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>QYLINE</h3>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <div class="project-meta">
+                        <span>⏱️ En cours</span>
+                        <span>🏢 Projet Micro-Entreprise</span>
+                    </div>
+                    <p class="project-description">
+                        
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Création de site web</span>
+                        <span class="tech-tag">Impression 3D</span>
+                    </div>
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <div class="label">Durée</div>
+                            <div class="value">EN COURS</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="label">Statut</div>
+                            <div class="value">En développement</div>
+                        </div>
+                    </div>
+                    <div class="challenge-box">
+                        <h4>🏆 Défi relevé</h4>
+                        <p></p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://drive.google.com/file/d/1et1KEFgIFIZs0LqeF7IdxOWmQ9rE2xej/view?usp=sharing" class="btn btn-primary" target="_blank">Voir le projet</a>
+                    </div>
+                </div>
+            </div>
+
+
+
             <!-- Projet Stokara -->
             <div class="project-card">
                 <div class="project-image" onclick="openModal('.././image/stokara.png')">
                     <img src=".././image/stokara.png" alt="Projet Stokara">
                 </div>
                 <div class="project-content">
-                    <h3>Projet Entreprise : Stokara</h3>
-                    <div class="project-meta">
-                        <span>En cours (6 mois)</span>
-                        <span>Gestion, Stock, Qualité</span>
+                    <div class="project-header">
+                        <h3>Stokara</h3>
+                        <span class="project-year">2026</span>
                     </div>
-                    <p>Développement d'un système de gestion des stocks, des emplacements et des schémas d'entreprise pour optimiser la logistique et la qualité.</p>
-                    <div class="project-tech">
+                    <div class="project-meta">
+                        <span>⏱️ En cours (8 mois)</span>
+                        <span>🏢 Projet Entreprise</span>
+                    </div>
+                    <p class="project-description">
+                        Développement d'un système de gestion des stocks, des emplacements et des schémas d'entreprise pour optimiser la logistique et la qualité.
+                    </p>
+                    <div class="tech-tags">
                         <span class="tech-tag">Gestion de Stock</span>
                         <span class="tech-tag">Logistique</span>
                         <span class="tech-tag">Qualité</span>
                         <span class="tech-tag">Schéma Entreprise</span>
                     </div>
-                    <div class="project-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Durée:</span>
-                            <span>6 mois</span>
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <div class="label">Durée</div>
+                            <div class="value">8 mois</div>
                         </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Statut:</span>
-                            <span>En développement</span>
+                        <div class="project-stat">
+                            <div class="label">Statut</div>
+                            <div class="value">En développement</div>
                         </div>
                     </div>
-                    <div class="challenges">
-                        <h4>Défis Relevés</h4>
+                    <div class="challenge-box">
+                        <h4>🏆 Défi relevé</h4>
                         <p>Intégration des schémas d'entreprise et collaboration avec les équipes pour répondre aux besoins métiers.</p>
                     </div>
                     <div class="project-links">
-                        <a href="https://drive.google.com/file/d/1et1KEFgIFIZs0LqeF7IdxOWmQ9rE2xej/view?usp=sharing" class="project-link" target="_blank">Voir le projet</a>
+                        <a href="https://drive.google.com/file/d/1et1KEFgIFIZs0LqeF7IdxOWmQ9rE2xej/view?usp=sharing" class="btn btn-primary" target="_blank">Voir le projet</a>
                     </div>
                 </div>
             </div>
@@ -533,34 +787,39 @@
                     <img src=".././image/Portfolio.png" alt="Portfolio Personnel">
                 </div>
                 <div class="project-content">
-                    <h3>Portfolio Personnel</h3>
-                    <div class="project-meta">
-                        <span>2025</span>
-                        <span>HTML, CSS, JavaScript</span>
+                    <div class="project-header">
+                        <h3>Portfolio Personnel</h3>
+                        <span class="project-year">2025</span>
                     </div>
-                    <p>Création d'un portfolio interactif pour présenter mes compétences et projets avec un design moderne et responsive.</p>
-                    <div class="project-tech">
+                    <div class="project-meta">
+                        <span>⏱️ 4 mois</span>
+                        <span>🎨 Design & Dev</span>
+                    </div>
+                    <p class="project-description">
+                        Création d'un portfolio interactif pour présenter mes compétences et projets avec un design moderne et responsive.
+                    </p>
+                    <div class="tech-tags">
                         <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Responsive</span>
                     </div>
-                    <div class="project-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Durée:</span>
-                            <span>4 mois</span>
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <div class="label">Durée</div>
+                            <div class="value">4 mois</div>
                         </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Statut:</span>
-                            <span>EN COURS</span>
+                        <div class="project-stat">
+                            <div class="label">Statut</div>
+                            <div class="value">EN COURS</div>
                         </div>
                     </div>
-                    <div class="challenges">
-                        <h4>Défis Relevés</h4>
+                    <div class="challenge-box">
+                        <h4>🏆 Défi relevé</h4>
                         <p>Intégration d'animations CSS complexes tout en maintenant des performances optimales sur tous les appareils.</p>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">Voir en ligne</a>
+                      <!--  <a href="#" class="btn btn-primary">Voir en ligne</a>-->
                     </div>
                 </div>
             </div>
@@ -571,30 +830,39 @@
                     <img src=".././image/GAME1.png" alt="The Chair of Fear">
                 </div>
                 <div class="project-content">
-                    <h3>The Chair of Fear</h3>
-                    <div class="project-meta">
-                        <span>2024</span>
-                        <span>Unreal Engine 5</span>
+                    <div class="project-header">
+                        <h3>The Chair of Fear</h3>
+                        <span class="project-year">2024</span>
                     </div>
-                    <p>Jeu d'horreur créé en 7h32 pour un game jam. Trouvez des indices pour ouvrir la porte et vous échapper.</p>
-                    <div class="project-tech">
+                    <div class="project-meta">
+                        <span>⏱️ 7h32</span>
+                        <span>🎮 Game Jam</span>
+                    </div>
+                    <p class="project-description">
+                        Jeu d'horreur créé en 7h32 pour un game jam. Trouvez des indices pour ouvrir la porte et vous échapper.
+                    </p>
+                    <div class="tech-tags">
                         <span class="tech-tag">Unreal Engine</span>
                         <span class="tech-tag">Game Design</span>
                         <span class="tech-tag">Horreur</span>
                         <span class="tech-tag">Game Jam</span>
                     </div>
-                    <div class="project-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Durée:</span>
-                            <span>7h32</span>
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <div class="label">Durée</div>
+                            <div class="value">7h32</div>
                         </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Statut:</span>
-                            <span>Publié</span>
+                        <div class="project-stat">
+                            <div class="label">Statut</div>
+                            <div class="value">Publié</div>
                         </div>
                     </div>
+                    <div class="challenge-box">
+                        <h4>🏆 Défi relevé</h4>
+                        <p>Créer un jeu complet et fonctionnel en moins de 8 heures, avec une mécanique de puzzle cohérente.</p>
+                    </div>
                     <div class="project-links">
-                        <a href="https://eltartice.itch.io/the-chair-of-fear" class="project-link" target="_blank">Jouer</a>
+                        <a href="https://eltartice.itch.io/the-chair-of-fear" class="btn btn-primary" target="_blank">Jouer</a>
                     </div>
                 </div>
             </div>
@@ -605,85 +873,52 @@
                     <img src=".././image/game2.png" alt="Glimmer of Escape">
                 </div>
                 <div class="project-content">
-                    <h3>Glimmer of Escape</h3>
-                    <div class="project-meta">
-                        <span>2024</span>
-                        <span>Unreal Engine 5</span>
+                    <div class="project-header">
+                        <h3>Glimmer of Escape</h3>
+                        <span class="project-year">2024</span>
                     </div>
-                    <p>Un rêve cauchemardesque où vous devez échapper à un monstre pour retourner dans le monde réel.</p>
-                    <div class="project-tech">
+                    <div class="project-meta">
+                        <span>⏱️ Projet court</span>
+                        <span>🎮 Aventure</span>
+                    </div>
+                    <p class="project-description">
+                        Un rêve cauchemardesque où vous devez échapper à un monstre pour retourner dans le monde réel.
+                    </p>
+                    <div class="tech-tags">
                         <span class="tech-tag">Unreal Engine</span>
                         <span class="tech-tag">Narration</span>
                         <span class="tech-tag">Aventure</span>
+                        <span class="tech-tag">Horreur</span>
                     </div>
-                    <div class="project-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Durée:</span>
-                            <span>Projet court</span>
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <div class="label">Durée</div>
+                            <div class="value">2 semaines</div>
                         </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Statut:</span>
-                            <span>Publié</span>
+                        <div class="project-stat">
+                            <div class="label">Statut</div>
+                            <div class="value">Publié</div>
                         </div>
+                    </div>
+                    <div class="challenge-box">
+                        <h4>🏆 Défi relevé</h4>
+                        <p>Créer une atmosphère oppressante et une narration immersive avec des moyens limités.</p>
                     </div>
                     <div class="project-links">
-                        <a href="https://eltartice.itch.io/glimmer-of-escape" class="project-link" target="_blank">Jouer</a>
+                        <a href="https://eltartice.itch.io/glimmer-of-escape" class="btn btn-primary" target="_blank">Jouer</a>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Footer -->
         <footer>
-            <p>Mathias JAVIERRE - Portfolio © 2025</p>
+            <p>Mathias <span class="footer-highlight">JAVIERRE</span> - Portfolio © 2025</p>
+            <p style="margin-top: 1rem; color: var(--text-gray); font-size: 0.9rem;">Tous droits réservés</p>
         </footer>
     </div>
 
     <script>
-        // Animation des cartes au défilement
-        const projectCards = document.querySelectorAll('.project-card');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        projectCards.forEach(card => {
-            card.style.animationPlayState = 'paused';
-            observer.observe(card);
-        });
-
-        // Effet de parallaxe sur la vidéo
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const video = document.querySelector('.video-container');
-            if (video) {
-                video.style.transform = `translateY(${scrolled * 0.1}px)`;
-            }
-        });
-
-        // Particules flottantes
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 80;
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            const posX = Math.random() * 100;
-            const posY = Math.random() * 100;
-            const size = Math.random() * 3 + 1;
-            const duration = Math.random() * 20 + 10;
-            const delay = Math.random() * 20;
-            particle.style.left = `${posX}%`;
-            particle.style.top = `${posY}%`;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.animationDuration = `${duration}s`;
-            particle.style.animationDelay = `${delay}s`;
-            particlesContainer.appendChild(particle);
-        }
-
         // Modal pour agrandir les images
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
@@ -692,29 +927,60 @@
         function openModal(imgSrc) {
             modal.style.display = "block";
             modalImg.src = imgSrc;
+            document.body.style.overflow = 'hidden';
         }
 
         closeBtn.onclick = function() {
             modal.style.display = "none";
+            document.body.style.overflow = 'auto';
         }
 
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+                document.body.style.overflow = 'auto';
             }
         }
 
-        // Lecture automatique de la vidéo
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.querySelector('video');
-            if (video) {
-                video.muted = true;
-                video.play().catch(e => console.log("Autoplay prevented:", e));
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Effet de parallaxe sur les particules
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            document.querySelectorAll('.light-particle').forEach((particle, index) => {
+                const speed = 30 + (index * 15);
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                particle.style.transform = `translate(${x}px, ${y}px) scale(${1 + mouseY * 0.2})`;
+            });
+        });
+
+        // Gestion des touches clavier pour la modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         });
     </script>
 </body>
 </html>
-
-
-
