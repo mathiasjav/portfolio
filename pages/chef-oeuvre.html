@@ -1,524 +1,333 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chef-d'Œuvre - STOKARA | Mathias JAVIERRE</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f9fb" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Chef-d'Œuvre - STOKARA | Mathias JAVIERRE" />
+  <meta property="og:description" content="STOKARA, logiciel de gestion des stocks réalisé par Mathias JAVIERRE dans le cadre du chef-d'œuvre de Bac Pro CIEL." />
+  <meta property="og:image" content="../image/stockara/IMG_ACC.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Chef-d'Œuvre - STOKARA | Mathias JAVIERRE</title>
 
-        :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #14141f;
-            --primary: #e94560;
-            --text-light: #ffffff;
-            --text-gray: #b0b0c0;
-            --accent-1: #7000ff;
-            --accent-2: #00ffaa;
-            --border-radius: 20px;
-        }
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1319'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%230e6a86'/%3E%3C/svg%3E" />
 
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Navigation */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--bg-card);
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            border: 1px solid rgba(255,255,255,0.05);
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--accent-1));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .back-button {
-            background: rgba(233,69,96,0.15);
-            color: var(--primary);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            border: 1px solid rgba(233,69,96,0.3);
-            transition: all 0.3s;
-        }
-
-        .back-button:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Header */
-        .page-header {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .page-meta {
-            color: var(--text-gray);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .presentation {
-            background: rgba(255,255,255,0.03);
-            padding: 1.2rem;
-            border-radius: 16px;
-            margin-top: 1rem;
-        }
-
-        .presentation p {
-            margin: 0.5rem 0;
-        }
-
-        /* Cartes */
-        .card {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            padding: 1.8rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .card h2 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(233,69,96,0.3);
-            display: inline-block;
-        }
-
-        .card h3 {
-            color: var(--text-light);
-            margin: 1rem 0 0.8rem 0;
-            font-size: 1.1rem;
-        }
-
-        /* Grilles */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
-            margin-top: 0.5rem;
-        }
-
-        .feature-box {
-            background: rgba(255,255,255,0.03);
-            padding: 1rem;
-            border-radius: 12px;
-            border-left: 3px solid var(--primary);
-        }
-
-        .feature-box h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-box p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
-        /* Galerie */
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .gallery-item {
-            width: 200px;
-            height: 150px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 1px solid rgba(233,69,96,0.3);
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.02);
-            border-color: var(--primary);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .placeholder-img {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #1a1a2e, #0d0d1a);
-            color: var(--text-gray);
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        /* Tableau compétences */
-        .table-container {
-            overflow-x: auto;
-        }
-
-        .comp-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .comp-table th {
-            background: rgba(233,69,96,0.2);
-            padding: 0.8rem;
-            text-align: left;
-            color: var(--text-light);
-        }
-
-        .comp-table td {
-            padding: 0.8rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-gray);
-        }
-
-        /* Dimensions */
-        .dimension-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-        }
-
-        .dim-card {
-            background: rgba(255,255,255,0.03);
-            padding: 1rem;
-            border-radius: 12px;
-        }
-
-        .dim-card h4 {
-            color: var(--accent-2);
-            margin-bottom: 0.5rem;
-        }
-
-        .dim-card p {
-            color: var(--text-gray);
-            font-size: 0.85rem;
-        }
-
-        /* Plan 5 min */
-        .plan-box {
-            background: rgba(0,255,170,0.05);
-            padding: 1rem;
-            border-radius: 12px;
-            margin: 0.5rem 0;
-        }
-
-        .plan-item {
-            margin: 0.8rem 0;
-            padding-left: 1rem;
-            border-left: 2px solid var(--primary);
-        }
-
-        /* Améliorations */
-        .improve-box {
-            background: rgba(233,69,96,0.1);
-            padding: 1rem;
-            border-radius: 12px;
-            margin: 0.8rem 0;
-        }
-
-        .eval-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .eval-table td {
-            padding: 0.7rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-gray);
-        }
-
-        .eval-table td:first-child {
-            color: var(--text-light);
-        }
-
-        .score {
-            background: rgba(233,69,96,0.2);
-            color: var(--primary);
-            padding: 0.2rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--accent-1));
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: transform 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .tech-badge {
-            display: inline-block;
-            background: rgba(233,69,96,0.15);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin: 0.2rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-gray);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            .gallery-item {
-                width: 150px;
-                height: 120px;
-            }
-        }
-    </style>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      var saved = null;
+      try { saved = localStorage.getItem('mj-theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark'
+                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+  </script>
 </head>
+
 <body>
+  <div class="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Contenu</a>
 
-<div class="container">
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">STOKARA | Chef-d'Œuvre</div>
-        <a href="../index.html" class="back-button">← Retour portfolio</a>
-    </nav>
+  <!-- ===================== Barre supérieure ===================== -->
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="../index.html">
+        <span class="brand__dot" aria-hidden="true"></span>
+        STOKARA | Chef-d'Œuvre
+      </a>
 
-    <!-- En-tête avec titre, classe, année et présentation -->
-    <div class="page-header">
+      <div class="topbar__tools">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Changer de thème">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+          </svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.3 8.3 0 1 0 20 14.5z"/>
+          </svg>
+        </button>
+        <a href="../index.html" class="back-link">← Retour portfolio</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="doc" id="main">
+    <div class="wrap">
+
+      <!-- ===================== En-tête du document ===================== -->
+      <header class="doc__head intro">
+        <div class="doc__meta" data-scramble>Classe : 1ère CIEL | Année : 2026</div>
         <h1>STOKARA</h1>
-        <div class="page-meta">Classe : 1ère CIEL | Année : 2026</div>
-        
-        <div class="presentation">
-            <p>Le projet STOKARA est un logiciel de gestion des stocks développé pour une entreprise locale ayant besoin d'optimiser son inventaire et son suivi qualité.</p>
-            <p>Il a été lancé car le magasin utilisait des fiches papier peu pratiques, ce qui entraînait des pertes liées aux produits périmés et un manque de traçabilité pour les maintenances des équipements des labos.</p>
-            <p>J'ai donc créé cet outil sur-mesure pour automatiser la gestion des dates de péremption, des trousses de pharmacie et des maintenances préventives, tout en permettant un accès sécurisé depuis l'intérieur comme l'extérieur du magasin.</p>
-            <p style="margin-top: 0.8rem; color: var(--primary);">C'est dans le cadre de mon chef-d'œuvre que j'ai réalisé le projet STOKARA, un logiciel de gestion des stocks pour mon entreprise d'ou je suis apprenti.</p>
-        </div>
-    </div>
 
-    <!-- Fiche projet avec technologies + 2 photos -->
-    <div class="card">
-        <h2>Fiche projet</h2>
-        <div class="gallery">
-            <div class="gallery-item">
-                <div class="placeholder-img"><img src="../image/stockara/IMG_ACC.png" alt="Description de l'image"></div>
-            </div>
-            <div class="gallery-item">
-                <div class="placeholder-img"><img src="../image/stockara/IMG_Depot.png" alt="Description de l'image"></div>
-            </div>
+        <div class="doc__lede">
+          <p>Le projet STOKARA est un logiciel de gestion des stocks développé pour une entreprise locale ayant besoin d'optimiser son inventaire et son suivi qualité.</p>
+          <p>Il a été lancé car le magasin utilisait des fiches papier peu pratiques, ce qui entraînait des pertes liées aux produits périmés et un manque de traçabilité pour les maintenances des équipements des labos.</p>
+          <p>J'ai donc créé cet outil sur-mesure pour automatiser la gestion des dates de péremption, des trousses de pharmacie et des maintenances préventives, tout en permettant un accès sécurisé depuis l'intérieur comme l'extérieur du magasin.</p>
+          <p>C'est dans le cadre de mon chef-d'œuvre que j'ai réalisé le projet STOKARA, un logiciel de gestion des stocks pour mon entreprise d'ou je suis apprenti.</p>
         </div>
-        <div style="margin-top: 1rem;">
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">HTML5</span>
-            <span class="tech-badge">CSS3</span>
-            <span class="tech-badge">JavaScript</span>
-            <span class="tech-badge">JSON</span>
-        </div>
-        <p style="margin-top: 1rem; color: var(--text-gray);"><strong>Technologies utilisées :</strong> Le logiciel est développé en Python pour la logique serveur, avec une interface utilisateur en HTML, CSS et JavaScript. Les données sont stockées au format JSON, ce qui permet une gestion simple et légère des informations.</p>
-        <a href="https://drive.google.com/file/d/1et1KEFgIFIZs0LqeF7IdxOWmQ9rE2xej/view?usp=sharing" class="btn">📄 Télécharger la fiche projet complète (PDF) Pas A Jour</a><br>
-        <a href="../pdfs/MAJ 30 Avril 2026 _.pdf" class="btn">📄 MAJ du 30 Avril</a>
-    </div>
+      </header>
 
-    <!-- Tableau compétences -->
-    <div class="card">
-        <h2>Tableau des compétences mobilisées</h2>
-        <div class="table-container">
-            <table class="comp-table">
+      <div class="doc__layout">
+
+        <!-- ===================== Sommaire ===================== -->
+        <nav class="toc" aria-label="Sommaire">
+          <a href="#fiche" class="is-active">Fiche projet</a>
+          <a href="#competences">Tableau des compétences mobilisées</a>
+          <a href="#oral">Ma présentation en 5 minutes</a>
+          <a href="#enjeux">Enjeux et dimensions du projet</a>
+          <a href="#perspectives">Améliorations et perspectives</a>
+          <a href="#support">Support candidat</a>
+          <a href="#evaluation">Auto-évaluation (grille jury)</a>
+        </nav>
+
+        <!-- ===================== Corps ===================== -->
+        <div class="doc__body">
+
+          <!-- Fiche projet -->
+          <section class="block" id="fiche" data-reveal>
+            <h2>Fiche projet</h2>
+
+            <div class="gallery">
+              <figure data-zoom="../image/stockara/IMG_ACC.png" data-zoom-alt="Description de l'image" role="button" tabindex="0" aria-label="Agrandir l'image">
+                <img loading="lazy" decoding="async" src="../image/stockara/IMG_ACC.png" alt="Description de l'image" />
+              </figure>
+              <figure data-zoom="../image/stockara/IMG_Depot.png" data-zoom-alt="Description de l'image" role="button" tabindex="0" aria-label="Agrandir l'image">
+                <img loading="lazy" decoding="async" src="../image/stockara/IMG_Depot.png" alt="Description de l'image" />
+              </figure>
+            </div>
+
+            <div class="badges">
+              <span class="badge">Python</span>
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3</span>
+              <span class="badge">JavaScript</span>
+              <span class="badge">JSON</span>
+            </div>
+
+            <p><strong>Technologies utilisées :</strong> Le logiciel est développé en Python pour la logique serveur, avec une interface utilisateur en HTML, CSS et JavaScript. Les données sont stockées au format JSON, ce qui permet une gestion simple et légère des informations.</p>
+
+            <div class="doc-actions">
+              <a href="https://drive.google.com/file/d/1et1KEFgIFIZs0LqeF7IdxOWmQ9rE2xej/view?usp=sharing" class="btn btn--solid" target="_blank" rel="noopener">📄 Télécharger la fiche projet complète (PDF) Pas A Jour</a>
+              <a href="../pdfs/MAJ 30 Avril 2026 _.pdf" class="btn btn--ghost" target="_blank" rel="noopener">📄 MAJ du 30 Avril</a>
+            </div>
+          </section>
+
+          <!-- Compétences -->
+          <section class="block" id="competences" data-reveal>
+            <h2>Tableau des compétences mobilisées</h2>
+
+            <div class="table-scroll">
+              <table class="table">
                 <thead>
-                    <tr>
-                        <th>Tâche réalisée</th>
-                        <th>Compétence CIEL</th>
-                        <th>Matière liée</th>
-                        <th>Preuve</th>
-                    </tr>
+                  <tr>
+                    <th>Tâche réalisée</th>
+                    <th>Compétence CIEL</th>
+                    <th>Matière liée</th>
+                    <th>Preuve</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Système de connexion sécurisé</td>
-                        <td>C12 - Sécuriser</td>
-                        <td>Cybersécurité</td>
-                        <td>Code Python</td>
-                    </tr>
-                    <tr>
-                        <td>Gestion des stocks + dates péremption</td>
-                        <td>C04 - Analyser structure</td>
-                        <td>Base de données</td>
-                        <td>Modèle JSON + tests</td>
-                    </tr>
-                    <tr>
-                        <td>Interface utilisateur HTML/JS</td>
-                        <td>C08 - Coder</td>
-                        <td>Programmation web</td>
-                        <td>Pages HTML commentées</td>
-                    </tr>
-                    <tr>
-                        <td>Serveur + accès externe (ports)</td>
-                        <td>C10 - Installer et configurer</td>
-                        <td>Réseaux</td>
-                        <td>Configuration box</td>
-                    </tr>
-                    <tr>
-                        <td>Maintenance préventive</td>
-                        <td>C11 - Maintenir</td>
-                        <td>Systèmes</td>
-                        <td>Logs de maintenance</td>
-                    </tr>
-                    <tr>
-                        <td>Schémas interactifs dépôt</td>
-                        <td>C09 - Tester et valider</td>
-                        <td></td>
-                        <td>Captures d'écran</td>
-                    </tr>
+                  <tr>
+                    <td>Système de connexion sécurisé</td>
+                    <td>C12 - Sécuriser</td>
+                    <td>Cybersécurité</td>
+                    <td>Code Python</td>
+                  </tr>
+                  <tr>
+                    <td>Gestion des stocks + dates péremption</td>
+                    <td>C04 - Analyser structure</td>
+                    <td>Base de données</td>
+                    <td>Modèle JSON + tests</td>
+                  </tr>
+                  <tr>
+                    <td>Interface utilisateur HTML/JS</td>
+                    <td>C08 - Coder</td>
+                    <td>Programmation web</td>
+                    <td>Pages HTML commentées</td>
+                  </tr>
+                  <tr>
+                    <td>Serveur + accès externe (ports)</td>
+                    <td>C10 - Installer et configurer</td>
+                    <td>Réseaux</td>
+                    <td>Configuration box</td>
+                  </tr>
+                  <tr>
+                    <td>Maintenance préventive</td>
+                    <td>C11 - Maintenir</td>
+                    <td>Systèmes</td>
+                    <td>Logs de maintenance</td>
+                  </tr>
+                  <tr>
+                    <td>Schémas interactifs dépôt</td>
+                    <td>C09 - Tester et valider</td>
+                    <td></td>
+                    <td>Captures d'écran</td>
+                  </tr>
                 </tbody>
-            </table>
-        </div>
-    </div>
+              </table>
+            </div>
+          </section>
 
-    <!-- Ma présentation en 5 min (plan structuré) -->
-    <div class="card">
-        <h2>Ma présentation en 5 minutes</h2>
-        <div class="plan-box">
-            <div class="plan-item"><strong>1. Qui je suis (1 min)</strong><br>Mathias JAVIERRE, 18 ans, élève de 1ère CIEL. Passionné par l'informatique et le développement.</div>
-            <div class="plan-item"><strong>2. Mon projet STOKARA (1 min)</strong><br>Logiciel de gestion des stocks débuté en 2025 pour une entreprise locale. Gestion des dates de péremption, catégories, trousses de pharmacie, export Excel.</div>
-            <div class="plan-item"><strong>3. Ce que j'ai réalisé techniquement (1.5 min)</strong><br>Développement Python, interface HTML/JS, serveur dédié sur PC Windows 11, accès externe via ports, système de comptes utilisateurs.</div>
-            <div class="plan-item"><strong>4. Ce que j'ai appris et les difficultés (1.5 min)</strong><br>Résolution de bugs (boucle login, API), schémas interactifs retirés sur mobile, ajout de la maintenance préventive. Compétences acquises en programmation, réseau et sécurité.</div>
-        </div>
-    </div>
+          <!-- Présentation en 5 minutes -->
+          <section class="block" id="oral" data-reveal>
+            <h2>Ma présentation en 5 minutes</h2>
 
-    <!-- Enjeux et dimensions -->
-    <div class="card">
-        <h2>Enjeux et dimensions du projet</h2>
-        <div class="dimension-grid">
-            <div class="dim-card">
+            <div class="steps">
+              <div class="step">
+                <strong>1. Qui je suis (1 min)</strong>
+                Mathias JAVIERRE, 18 ans, élève de 1ère CIEL. Passionné par l'informatique et le développement.
+              </div>
+              <div class="step">
+                <strong>2. Mon projet STOKARA (1 min)</strong>
+                Logiciel de gestion des stocks débuté en 2025 pour une entreprise locale. Gestion des dates de péremption, catégories, trousses de pharmacie, export Excel.
+              </div>
+              <div class="step">
+                <strong>3. Ce que j'ai réalisé techniquement (1.5 min)</strong>
+                Développement Python, interface HTML/JS, serveur dédié sur PC Windows 11, accès externe via ports, système de comptes utilisateurs.
+              </div>
+              <div class="step">
+                <strong>4. Ce que j'ai appris et les difficultés (1.5 min)</strong>
+                Résolution de bugs (boucle login, API), schémas interactifs retirés sur mobile, ajout de la maintenance préventive. Compétences acquises en programmation, réseau et sécurité.
+              </div>
+            </div>
+          </section>
+
+          <!-- Enjeux -->
+          <section class="block" id="enjeux" data-reveal>
+            <h2>Enjeux et dimensions du projet</h2>
+
+            <div class="cards-grid">
+              <div class="mini-card">
                 <h4>Socio-économique</h4>
                 <p>Optimisation de la gestion des stocks, réduction des pertes liées aux produits périmés, gain d'efficacité pour les employés.</p>
-            </div>
-            <div class="dim-card">
+              </div>
+              <div class="mini-card">
                 <h4>Environnementale</h4>
                 <p>Limitation du gaspillage des produits, maintenance préventive prolongeant la durée de vie des équipements.</p>
-            </div>
-            <div class="dim-card">
+              </div>
+              <div class="mini-card">
                 <h4>Numérique</h4>
                 <p>Sécurisation des données via mots de passe, accès distant maîtrisé, fiabilité du stockage JSON.</p>
-            </div>
-            <div class="dim-card">
+              </div>
+              <div class="mini-card">
                 <h4>Culturelle</h4>
                 <p>Transition du papier vers le numérique, appropriation de l'outil par les équipes, nouvelles habitudes de travail.</p>
+              </div>
             </div>
+          </section>
+
+          <!-- Améliorations -->
+          <section class="block" id="perspectives" data-reveal>
+            <h2>Améliorations et perspectives</h2>
+
+            <div class="notes-stack">
+              <div class="note-row">
+                <strong>✅ Déjà ajouté en cours de route :</strong>
+                <p>Service Maintenance Préventive, schémas interactifs du dépôt, raccourcis et nouvelles fonctionnalités.</p>
+              </div>
+              <div class="note-row">
+                <strong>🔮 Améliorations envisagées :</strong>
+                <p>Refaire les schémas pour les rendre adaptables sur mobile, notifications automatiques pour les dates de péremption.</p>
+              </div>
+              <div class="note-row">
+                <strong>🎓 Perspectives d'évolution :</strong>
+                <p>Poursuite d'études en BTS SIO. Le projet m'a confirmé mon intérêt pour le développement full-stack et l'administration systèmes.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Support candidat -->
+          <section class="block" id="support" data-reveal>
+            <h2>Support candidat</h2>
+
+            <div class="doc-cta">
+              <p>Document d'appui des 5 pages pour l'oral du chef-d'œuvre</p>
+              <div class="doc-actions" style="justify-content:center">
+                <a href="../pdfs/STOKARA Une autonomisation du temp.pdf" class="btn btn--accent" target="_blank" rel="noopener">📥 Télécharger le support PDF (5 pages)</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Auto-évaluation -->
+          <section class="block" id="evaluation" data-reveal>
+            <h2>Auto-évaluation (grille jury)</h2>
+
+            <table class="eval">
+              <tr><td>Présentation du diplôme &amp; spécialité</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
+              <tr><td>Démarche de réalisation &amp; contribution</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
+              <tr><td>Difficultés rencontrées &amp; aspects positifs</td><td><span class="score">🔸🔸🔸</span></td></tr>
+              <tr><td>Avis personnel sur la production</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
+              <tr><td>Améliorations / perspectives</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
+              <tr><td>Dimensions (socio-éco, env., numérique, culturelle)</td><td><span class="score">🔸🔸🔸</span></td></tr>
+              <tr><td>Compétences acquises &amp; insertion pro</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
+              <tr><td>Autonomie par rapport au support</td><td><span class="score">🔸🔸🔸</span></td></tr>
+              <tr><td>Mise en contexte filière métier</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
+              <tr><td>Identification enjeux transition écologique/numérique</td><td><span class="score">🔸🔸🔸</span></td></tr>
+            </table>
+
+            <p class="total"><strong>Total estimé : 14/20</strong> - Objectif : améliorer les schémas sur mobile et la robustesse des API.</p>
+          </section>
+
         </div>
+      </div>
     </div>
+  </main>
 
-    <!-- Améliorations et perspectives -->
-    <div class="card">
-        <h2>Améliorations et perspectives</h2>
-        <div class="improve-box">
-            <strong>✅ Déjà ajouté en cours de route :</strong>
-            <p style="margin-top: 0.3rem;">Service Maintenance Préventive, schémas interactifs du dépôt, raccourcis et nouvelles fonctionnalités.</p>
-        </div>
-        <div class="improve-box">
-            <strong>🔮 Améliorations envisagées :</strong>
-            <p style="margin-top: 0.3rem;">Refaire les schémas pour les rendre adaptables sur mobile, notifications automatiques pour les dates de péremption.</p>
-        </div>
-        <div class="improve-box">
-            <strong>🎓 Perspectives d'évolution :</strong>
-            <p style="margin-top: 0.3rem;">Poursuite d'études en BTS SIO. Le projet m'a confirmé mon intérêt pour le développement full-stack et l'administration systèmes.</p>
-        </div>
+  <!-- ===================== Pied de page ===================== -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p>Mathias <strong>JAVIERRE</strong> - 1ère CIEL</p>
+      <p>MFR de Pontonx - Chef-d'œuvre STOKARA © 2026</p>
     </div>
+  </footer>
 
-    <!-- Lien de téléchargement du support PDF -->
-    <div class="card" style="text-align: center;">
-        <h2>Support candidat</h2>
-        <p>Document d'appui des 5 pages pour l'oral du chef-d'œuvre</p>
-        <a href="../pdfs/STOKARA Une autonomisation du temp.pdf" class="btn">📥 Télécharger le support PDF (5 pages)</a>
-       
+  <!-- ===================== Modale ===================== -->
+  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__fx" aria-hidden="true">
+      <span class="fx-orb fx-orb--a"></span>
+      <span class="fx-orb fx-orb--b"></span>
+      <span class="fx-orb fx-orb--c"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-grid"></span>
+      <span class="fx-sweep"></span>
+      <svg class="fx-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <rect class="fx-snake fx-snake--1" x="0" y="0" width="100" height="100" pathLength="100" />
+        <rect class="fx-snake fx-snake--2" x="0" y="0" width="100" height="100" pathLength="100" />
+      </svg>
     </div>
+    <button class="modal__close" type="button" aria-label="Fermer">&times;</button>
+    <button class="modal__nav modal__nav--prev" type="button" aria-label="Image précédente">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="modal__nav modal__nav--next" type="button" aria-label="Image suivante">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="modal__body"><img loading="lazy" decoding="async" id="modalImage" src="" alt="" /></div>
+  </div>
 
-    <!-- Auto-évaluation avec grille remplie -->
-    <div class="card">
-        <h2>Auto-évaluation (grille jury)</h2>
-        <table class="eval-table">
-            <tr><td>Présentation du diplôme & spécialité</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
-            <tr><td>Démarche de réalisation & contribution</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
-            <tr><td>Difficultés rencontrées & aspects positifs</td><td><span class="score">🔸🔸🔸</span></td></tr>
-            <tr><td>Avis personnel sur la production</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
-            <tr><td>Améliorations / perspectives</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
-            <tr><td>Dimensions (socio-éco, env., numérique, culturelle)</td><td><span class="score">🔸🔸🔸</span></td></tr>
-            <tr><td>Compétences acquises & insertion pro</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
-            <tr><td>Autonomie par rapport au support</td><td><span class="score">🔸🔸🔸</span></td></tr>
-            <tr><td>Mise en contexte filière métier</td><td><span class="score">🔸🔸🔸🔸</span></td></tr>
-            <tr><td>Identification enjeux transition écologique/numérique</td><td><span class="score">🔸🔸🔸</span></td></tr>
-        </table>
-        <p style="margin-top: 1rem;"><strong style="color: var(--primary);">Total estimé : 14/20</strong> - Objectif : améliorer les schémas sur mobile et la robustesse des API.</p>
-    </div>
+  <button class="to-top" type="button" aria-label="Revenir en haut">
+    <svg class="to-top__ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+      <circle class="to-top__track" cx="22" cy="22" r="20"/>
+      <circle class="to-top__bar" cx="22" cy="22" r="20"/>
+    </svg>
+    <svg class="to-top__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
 
-    <!-- Footer -->
-    <footer>
-        <p>Mathias <strong style="color: var(--primary);">JAVIERRE</strong> - 1ère CIEL</p>
-        <p>MFR de Pontonx - Chef-d'œuvre STOKARA © 2026</p>
-    </footer>
-</div>
-
+  <script src="../assets/js/site.js"></script>
 </body>
 </html>
