@@ -4,1392 +4,487 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Portfolio professionnel de Mathias JAVIERRE – Étudiant en Systèmes Numériques et Maintenance Informatique" />
+  <meta name="theme-color" content="#f7f9fb" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Mathias JAVIERRE | Portfolio Professionnel" />
+  <meta property="og:description" content="Portfolio professionnel de Mathias JAVIERRE – Étudiant en Systèmes Numériques et Maintenance Informatique" />
+  <meta property="og:image" content="./image/PP.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>Mathias JAVIERRE | Portfolio Professionnel</title>
-  <!-- Polices modernes -->
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1319'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%230e6a86'/%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg-dark: #0a0a0f;
-      --bg-card: #14141f;
-      --primary: #e94560;
-      --primary-light: #ff6b81;
-      --text-light: #ffffff;
-      --text-gray: #b0b0c0;
-      --accent-1: #7000ff;
-      --accent-2: #00ffaa;
-      --gradient: linear-gradient(135deg, var(--primary), var(--accent-1));
-      --gradient-hover: linear-gradient(135deg, var(--accent-1), var(--primary));
-      --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      --border-glow: 0 0 0 1px rgba(233, 69, 96, 0.2);
-      --border-radius: 24px;
-      --border-radius-sm: 16px;
-      --glass-border: 1px solid rgba(255, 255, 255, 0.05);
-      --card-bg: rgba(20, 20, 31, 0.7);
-      --card-bg-strong: rgba(20, 20, 31, 0.9);
-      --blur: 12px;
-    }
-
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      line-height: 1.7;
-      overflow-x: hidden;
-      position: relative;
-      min-height: 100vh;
-    }
-
-    /* Grille de fond */
-    .grid-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(rgba(233, 69, 96, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(233, 69, 96, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      z-index: -2;
-      pointer-events: none;
-    }
-
-    /* Particules lumineuses */
-    .light-particle {
-      position: fixed;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle at center, rgba(233, 69, 96, 0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: -1;
-      pointer-events: none;
-      animation: floatParticle 25s infinite alternate ease-in-out;
-    }
-
-    .particle-1 {
-      top: 10%;
-      left: 5%;
-      background: radial-gradient(circle at center, rgba(233, 69, 96, 0.2) 0%, transparent 70%);
-    }
-
-    .particle-2 {
-      bottom: 10%;
-      right: 5%;
-      background: radial-gradient(circle at center, rgba(112, 0, 255, 0.2) 0%, transparent 70%);
-      animation-delay: -8s;
-      width: 500px;
-      height: 500px;
-    }
-
-    .particle-3 {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle at center, rgba(0, 255, 170, 0.1) 0%, transparent 70%);
-      animation-delay: -15s;
-      width: 600px;
-      height: 600px;
-    }
-
-    @keyframes floatParticle {
-      0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.5;
-      }
-      100% {
-        transform: translate(8%, 8%) scale(1.3);
-        opacity: 0.8;
-      }
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem;
-      position: relative;
-    }
-
-    /* Header avec photo de profil */
-    .profile-header {
-      padding: 2rem 1rem;
-      text-align: center;
-      position: relative;
-      animation: fadeIn 0.8s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: none; }
-    }
-
-    .profile-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 3rem;
-      align-items: center;
-      justify-items: start;
-      position: relative;
-      padding: 2.5rem;
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      backdrop-filter: blur(var(--blur));
-      border: var(--glass-border);
-      box-shadow: var(--shadow);
-    }
-
-    .profile-photo-wrapper {
-      position: relative;
-    }
-
-    .profile-photo {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--primary);
-      box-shadow: var(--shadow), 0 0 30px rgba(233, 69, 96, 0.3);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      animation: borderPulse 3s infinite alternate;
-    }
-
-    @keyframes borderPulse {
-      from { box-shadow: 0 0 20px rgba(233, 69, 96, 0.3); }
-      to { box-shadow: 0 0 40px rgba(233, 69, 96, 0.6); }
-    }
-
-    .profile-photo:hover {
-      transform: scale(1.05) rotate(2deg);
-      border-color: var(--accent-1);
-    }
-
-    .speech-bubble {
-      position: absolute;
-      top: -20px;
-      right: -20px;
-      background: linear-gradient(135deg, var(--primary), var(--accent-1));
-      border-radius: 50px;
-      padding: 0.8rem 1.5rem;
-      color: white;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      z-index: 30;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .speech-bubble:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(233, 69, 96, 0.4);
-    }
-
-    .speech-bubble::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 30px;
-      width: 0;
-      height: 0;
-      border-left: 12px solid transparent;
-      border-right: 12px solid transparent;
-      border-top: 12px solid var(--primary);
-    }
-
-    .play-icon {
-      display: inline-flex;
-      width: 24px;
-      height: 24px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .profile-info {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-      gap: 1rem;
-    }
-
-    .profile-info h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, var(--accent-1) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      line-height: 1.2;
-    }
-
-    .profile-tags {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .profile-tag {
-      padding: 0.5rem 1.2rem;
-      background: rgba(233, 69, 96, 0.1);
-      border: 1px solid rgba(233, 69, 96, 0.3);
-      border-radius: 50px;
-      color: var(--primary);
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-
-    .profile-contact {
-      display: flex;
-      gap: 2rem;
-      margin: 0.5rem 0;
-      flex-wrap: wrap;
-    }
-
-    .profile-contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-gray);
-      transition: color 0.3s;
-    }
-
-    .profile-contact-item:hover {
-      color: var(--primary);
-    }
-
-    .profile-contact-item i {
-      color: var(--primary);
-    }
-
-    .cv-download {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-top: 1rem;
-      padding: 0.8rem 2rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent-1));
-      border: none;
-      border-radius: 50px;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-      box-shadow: var(--shadow);
-    }
-
-    .cv-download:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(233, 69, 96, 0.4);
-    }
-
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 1.5rem;
-      z-index: 1000;
-      margin: 2rem auto;
-      max-width: 1300px;
-      padding: 0.8rem 1.5rem;
-      background: rgba(20, 20, 31, 0.9);
-      backdrop-filter: blur(var(--blur));
-      border-radius: 100px;
-      border: var(--glass-border);
-      box-shadow: var(--shadow);
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: center;
-      gap: 0.3rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    .navbar > li > a {
-      display: block;
-      padding: 0.8rem 1.5rem;
-      color: var(--text-light);
-      font-family: 'Syne', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 50px;
-      transition: all 0.3s;
-      position: relative;
-      text-decoration: none;
-    }
-
-    .navbar > li > a:hover {
-      color: var(--primary);
-      background: rgba(233, 69, 96, 0.1);
-    }
-
-    .navbar > li > a.active {
-      color: var(--primary);
-      background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(112, 0, 255, 0.2));
-      border: 1px solid rgba(233, 69, 96, 0.3);
-    }
-
-    /* Sections */
-    section {
-      display: none;
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      border: var(--glass-border);
-      box-shadow: var(--shadow);
-      padding: 3rem;
-      margin: 2.5rem auto;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(var(--blur));
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    section.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--primary), var(--accent-1), var(--accent-2));
-    }
-
-    section h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--text-light);
-      text-align: center;
-      margin-bottom: 2.5rem;
-      position: relative;
-      display: inline-block;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    section h2::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -12px;
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent-1));
-      border-radius: 2px;
-    }
-
-    section h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.8rem;
-      color: var(--text-light);
-      margin: 2rem 0 1.5rem;
-    }
-
-    /* Timeline */
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      position: relative;
-      margin: 2rem 0;
-    }
-
-    .timeline-grid::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--primary), var(--accent-1));
-      transform: translateX(-50%);
-      border-radius: 2px;
-    }
-
-    .timeline-item {
-      position: relative;
-      padding: 1.5rem;
-    }
-
-    .timeline-item.left {
-      padding-right: 2.5rem;
-    }
-
-    .timeline-item.right {
-      padding-left: 2.5rem;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      top: 2rem;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--accent-1));
-      box-shadow: 0 0 20px var(--primary);
-      z-index: 10;
-    }
-
-    .timeline-item.left::before {
-      right: -10px;
-    }
-
-    .timeline-item.right::before {
-      left: -10px;
-    }
-
-    .timeline-content {
-      background: rgba(255, 255, 255, 0.02);
-      border: var(--glass-border);
-      border-radius: var(--border-radius-sm);
-      padding: 2rem;
-      transition: all 0.3s;
-    }
-
-    .timeline-content:hover {
-      transform: translateY(-5px);
-      background: rgba(233, 69, 96, 0.05);
-      border-color: var(--primary);
-    }
-
-    .timeline-date {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
-    }
-
-    .timeline-content h3 {
-      font-size: 1.5rem;
-      margin: 0.3rem 0 0.2rem;
-    }
-
-    .timeline-content h4 {
-      color: var(--text-gray);
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-    }
-
-    /* Compétences (flip cards) */
-    .skills-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .skills-list li {
-      list-style: none;
-      height: 140px;
-      perspective: 1500px;
-    }
-
-    .flip-card {
-      height: 100%;
-      width: 100%;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-    }
-
-    .skills-list li:hover .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      backface-visibility: hidden;
-      border-radius: var(--border-radius-sm);
-      border: var(--glass-border);
-      box-shadow: var(--shadow);
-    }
-
-    .flip-card-front {
-      background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(112, 0, 255, 0.1));
-      color: var(--text-light);
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-left: 4px solid var(--primary);
-    }
-
-    .flip-card-back {
-      background: var(--card-bg-strong);
-      transform: rotateY(180deg);
-      overflow: hidden;
-    }
-
-    .flip-card-back img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    /* Fiches d'activité */
-    .activity-item {
-      background: rgba(233, 69, 96, 0.05);
-      border-left: 5px solid var(--primary);
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-      border-radius: var(--border-radius-sm);
-      border: var(--glass-border);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .activity-item:hover {
-      transform: translateX(10px);
-      background: rgba(233, 69, 96, 0.1);
-      border-left-color: var(--accent-1);
-    }
-
-    .activity-preview {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .activity-item a {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.3rem;
-      display: block;
-      text-decoration: none;
-      margin-bottom: 0.5rem;
-      font-family: 'Syne', sans-serif;
-    }
-
-    .activity-item p {
-      color: var(--text-gray);
-    }
-
-    /* Certificats */
-    .certificates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .certificate-card {
-      background: var(--card-bg);
-      border-radius: var(--border-radius-sm);
-      border: var(--glass-border);
-      overflow: hidden;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .certificate-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--primary);
-      box-shadow: 0 20px 40px rgba(233, 69, 96, 0.2);
-    }
-
-    .certificate-card img {
-      width: 100%;
-      height: 250px;
-      object-fit: contain;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 1.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .certificate-card h3 {
-      text-align: center;
-      font-size: 1.2rem;
-      margin: 1.2rem 0;
-      color: var(--text-light);
-    }
-
-    /* Modales */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 3000;
-      background: rgba(0, 0, 0, 0.98);
-      backdrop-filter: blur(10px);
-      animation: fadeIn 0.3s ease;
-    }
-
-    .modal.open {
-      display: block;
-    }
-
-    .modal-content {
-      display: block;
-      margin: 5vh auto;
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: var(--border-radius);
-      border: 3px solid var(--primary);
-      box-shadow: 0 0 50px rgba(233, 69, 96, 0.3);
-    }
-
-    .video-modal-content {
-      max-width: 90%;
-      max-height: 90%;
-      margin: 5vh auto;
-      display: block;
-      border-radius: var(--border-radius);
-      border: 3px solid var(--primary);
-    }
-
-    .close {
-      position: fixed;
-      top: 30px;
-      right: 40px;
-      color: var(--text-light);
-      font-size: 50px;
-      font-weight: 300;
-      cursor: pointer;
-      transition: all 0.3s;
-      z-index: 3001;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(233, 69, 96, 0.2);
-      border-radius: 50%;
-      border: 2px solid var(--primary);
-    }
-
-    .close:hover {
-      color: var(--primary);
-      transform: rotate(90deg);
-      background: rgba(233, 69, 96, 0.4);
-    }
-
-    /* Bouton Back to Top */
-    .back-to-top {
-      position: fixed;
-      right: 30px;
-      bottom: 30px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--accent-1));
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      z-index: 1500;
-      cursor: pointer;
-      border: none;
-    }
-
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(233, 69, 96, 0.4);
-    }
-
-    /* Menu hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 35px;
-      height: 25px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      z-index: 1001;
-      position: fixed;
-      top: 25px;
-      right: 25px;
-    }
-
-    .hamburger span {
-      display: block;
-      height: 3px;
-      width: 100%;
-      background-color: var(--text-light);
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(11px) rotate(45deg);
-    }
-
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-11px) rotate(-45deg);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2.5rem;
-      margin-top: 3rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: var(--text-gray);
-      font-family: 'Syne', sans-serif;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .profile-container {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        text-align: center;
-        gap: 2rem;
-      }
-
-      .profile-info {
-        align-items: center;
-        text-align: center;
-      }
-
-      .profile-info h1 {
-        font-size: 2.5rem;
-      }
-
-      .profile-contact {
-        justify-content: center;
-      }
-
-      .speech-bubble {
-        top: -15px;
-        right: -10px;
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-      }
-
-      nav {
-        border-radius: 30px;
-        padding: 0.8rem;
-      }
-
-      .navbar {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .navbar > li > a {
-        width: 100%;
-        text-align: center;
-      }
-
-      .timeline-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline-grid::before {
-        left: 30px;
-      }
-
-      .timeline-item.left,
-      .timeline-item.right {
-        padding: 0 0 0 4rem;
-      }
-
-      .timeline-item::before {
-        left: 22px !important;
-        right: auto !important;
-      }
-
-      section {
-        padding: 2rem 1.5rem;
-      }
-
-      section h2 {
-        font-size: 2rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        margin: 0;
-        border-radius: 0;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease;
-        background: rgba(20, 20, 31, 0.98);
-      }
-
-      nav.active {
-        transform: translateY(0);
-      }
-
-      .profile-photo {
-        width: 180px;
-        height: 180px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./assets/css/site.css" />
+
+  <script>
+    // Applique le thema avant le rendu pour eviter tout clignotement
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      var saved = null;
+      try { saved = localStorage.getItem('mj-theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark'
+                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+  </script>
 </head>
+
 <body>
-  <!-- Éléments de fond -->
-  <div class="grid-background"></div>
-  <div class="light-particle particle-1"></div>
-  <div class="light-particle particle-2"></div>
-  <div class="light-particle particle-3"></div>
+  <div class="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Contenu</a>
 
-  <!-- Modales -->
-  <div id="imageModal" class="modal">
-    <button class="close">&times;</button>
-    <img class="modal-content" id="modalImage" alt="Agrandissement" />
-  </div>
+  <!-- ===================== En-tête ===================== -->
+  <header class="masthead">
+    <div class="wrap masthead__inner">
 
-  <div id="videoModal" class="modal">
-    <button class="close">&times;</button>
-    <video class="video-modal-content" id="videoModalContent" controls>
-      <source src="Video/Projetue5.mp4" type="video/mp4" />
-    </video>
-  </div>
+      <div class="intro">
+        <div class="masthead__meta">
+          <span class="eyebrow" data-scramble>Étudiant Bac Pro CIEL</span>
+        </div>
 
-  <div id="pdfModal" class="modal">
-    <button class="close">&times;</button>
-    <iframe id="pdfFrame" style="width:90%; height:90%; margin:5vh auto; display:block; border:none; border-radius:var(--border-radius);"></iframe>
-  </div>
+        <h1 class="masthead__name">
+          <span class="given">Mathias</span>
+          <span class="family">JAVIERRE</span>
+        </h1>
 
-  <!-- Boutons fixes -->
-  <button class="back-to-top" id="backToTop">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 20L12 4M12 4L5 11M12 4L19 11"/>
-    </svg>
-  </button>
+        <div class="contact">
+          <span><i class="fas fa-birthday-cake" aria-hidden="true"></i> <span data-age></span> ans</span>
+          <span><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:mathiasjavierre0@gmail.com">mathiasjavierre0@gmail.com</a><button class="copy-btn" type="button" data-copy="mathiasjavierre0@gmail.com" aria-label="Copier l'adresse e-mail" title="Copier"><svg class="icon-copy" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><svg class="icon-check" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 7"/></svg></button></span>
+          <span><i class="fas fa-calendar" aria-hidden="true"></i> 05/03/2008</span>
+        </div>
 
-  <button class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+        <div class="masthead__actions">
+          <a href="CV.pdf" class="btn btn--solid" download>
+            <i class="fas fa-file-pdf" aria-hidden="true"></i> Télécharger mon CV
+          </a>
+          <a href="pages/chef-oeuvre.html" class="btn btn--ghost">
+            <i class="fas fa-file-pdf" aria-hidden="true"></i> Mon Projet STOKARA
+          </a>
+        </div>
+      </div>
 
-  <!-- En-tête -->
-  <header class="profile-header">
-    <div class="profile-container">
-      <div class="profile-photo-wrapper">
-        <img src="./image/PP.jpg" alt="Mathias JAVIERRE" class="profile-photo" id="profilePhoto" />
-        <div class="speech-bubble" id="speechBubble">
-          <span class="play-icon"><i class="fas fa-play" style="font-size:10px;"></i></span>
+      <div class="portrait">
+        <div class="portrait__box">
+          <div class="portrait__frame" data-video role="button" tabindex="0" aria-label="Lire le CV vidéo">
+            <img src="./image/PP.jpg" alt="Mathias JAVIERRE" />
+          </div>
+        </div>
+        <button class="btn btn--quiet portrait__cta" data-video type="button">
+          <span class="portrait__play" aria-hidden="true"><i class="fas fa-play"></i></span>
           Voir mon CV Vidéo
-        </div>
+        </button>
       </div>
-      <div class="profile-info">
-        <h1>Mathias JAVIERRE</h1>
-        <div class="profile-tags">
-          <span class="profile-tag">Étudiant Bac Pro CIEL</span>
-          <span class="profile-tag"><i class="fas fa-birthday-cake"></i> <span id="age"></span> ans</span>
-        </div>
-        <div class="profile-contact">
-          <span class="profile-contact-item"><i class="fas fa-envelope"></i> mathiasjavierre0@gmail.com</span>
-          <span class="profile-contact-item"><i class="fas fa-calendar"></i> 05/03/2008</span>
-        </div>
-        <a href="CV.pdf" class="cv-download" download>
-          <i class="fas fa-file-pdf"></i> Télécharger mon CV
-        </a>
-        <a href="pages/chef-oeuvre.html" class="cv-download">
-          <i class="fas fa-file-pdf"></i> Mon Projet STOKARA
-        </a>
-      </div>
+
     </div>
   </header>
 
-  <!-- Navigation -->
-  <nav>
-    <ul class="navbar" id="navbar">
-      <li><a href="#presentation" class="active">Présentation</a></li>
-      <li><a href="#pbacpro">Bac Pro CIEL</a></li>
-      <li><a href="#cv">Parcours</a></li>
-      <li><a href="#skills">Compétences</a></li>
-      <li><a href="#activities">Fiches d'Activité</a></li>
-      <li><a href="./pages/projet.html">Projets</a></li>
-      <li><a href="#certificates">Attestations</a></li>
-    </ul>
+  <!-- ===================== Navigation ===================== -->
+  <nav class="nav" aria-label="Sections du portfolio">
+    <div class="wrap nav__inner">
+      <ul class="nav__list">
+        <li><a href="#presentation" class="is-active">Présentation</a></li>
+        <li><a href="#pbacpro">Bac Pro CIEL</a></li>
+        <li><a href="#cv">Parcours</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#activities">Fiches d'Activité</a></li>
+        <li><a href="./pages/projet.html" data-external>Projets</a></li>
+        <li><a href="#certificates">Attestations</a></li>
+        <li class="nav__indicator" aria-hidden="true"></li>
+      </ul>
+
+      <div class="nav__tools">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Changer de thème">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+          </svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.3 8.3 0 1 0 20 14.5z"/>
+          </svg>
+        </button>
+
+        <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
   </nav>
 
-  <!-- Contenu principal -->
-  <main class="container">
-    <!-- Section Présentation -->
-    <section id="presentation" class="active">
-      <h2>Ma Présentation</h2>
-      <div style="max-width:800px; margin:0 auto; font-size:1.1rem; color:var(--text-gray);">
-        <p style="margin-bottom:1.5rem;">
-          Bonjour et bienvenue sur mon portfolio ! Je m'appelle Mathias JAVIERRE, 
-          <mark style="background:rgba(233,69,96,0.3); color:white; padding:0.2rem 0.5rem; border-radius:4px;">j'ai <span id="age2"></span> ans</mark> 
-          et je suis passionné par l'informatique et le développement.
-        </p>
-        <p style="margin-bottom:1.5rem;">
-          Depuis plusieurs années, je m'intéresse à la création de jeux vidéo, au développement web
-          et à la programmation en Python et HTML. J'aime apprendre par moi-même et je m'adapte 
-          facilement aux nouvelles situations, notamment lorsqu'il s'agit de résoudre des problèmes techniques.
-        </p>
-        <p>
-          De nature calme et réservée, je suis sérieux, curieux et j'aime comprendre comment les choses fonctionnent.
-        </p>
+  <!-- ===================== Contenu ===================== -->
+  <main class="main" id="main">
+
+    <!-- Présentation -->
+    <section id="presentation" class="section is-active">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="section__index" aria-hidden="true"></span>
+          <h2 class="section__title">Ma Présentation</h2>
+        </div>
+
+        <div class="prose" data-reveal>
+          <p>
+            Bonjour et bienvenue sur mon portfolio ! Je m'appelle Mathias JAVIERRE,
+            <mark>j'ai <span data-age></span> ans</mark>
+            et je suis passionné par l'informatique et le développement.
+          </p>
+          <p>
+            Depuis plusieurs années, je m'intéresse à la création de jeux vidéo, au développement web
+            et à la programmation en Python et HTML. J'aime apprendre par moi-même et je m'adapte
+            facilement aux nouvelles situations, notamment lorsqu'il s'agit de résoudre des problèmes techniques.
+          </p>
+          <p>
+            De nature calme et réservée, je suis sérieux, curieux et j'aime comprendre comment les choses fonctionnent.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Section Bac Pro CIEL -->
-    <section id="pbacpro">
-      <h2>Bac Pro CIEL</h2>
-      <div style="max-width:900px; margin:0 auto; color:var(--text-gray);">
-        <p style="margin-bottom:1.5rem;">
-          Le <strong style="color:var(--primary);">Bac Professionnel CIEL</strong> (Cybersécurité, Informatique et Réseaux, Électronique) 
-          est une formation en trois ans destinée aux métiers du numérique.
-        </p>
-        <p style="margin-bottom:1.5rem;">
-          Cette formation permet d'apprendre à installer, configurer et dépanner des équipements informatiques, 
-          des systèmes électroniques et des réseaux. Les élèves découvrent également les bases de la cybersécurité : 
-          protection des données, sécurisation d'un réseau, analyse des risques.
-        </p>
-        <p style="margin-bottom:1.5rem;">
-          Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs, utilisation de Windows et Linux, 
-          diagnostic de pannes, et manipulation d'objets connectés. Il inclut aussi plusieurs semaines de stage en entreprise.
-        </p>
-        <p>
-          <em>En résumé, le Bac Pro CIEL forme des techniciens polyvalents capables d'intervenir sur l'informatique, 
+    <!-- Bac Pro CIEL -->
+    <section id="pbacpro" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="section__index" aria-hidden="true"></span>
+          <h2 class="section__title">Bac Pro CIEL</h2>
+        </div>
+
+        <div class="prose" data-reveal>
+          <p>
+            Le <strong>Bac Professionnel CIEL</strong> (Cybersécurité, Informatique et Réseaux, Électronique)
+            est une formation en trois ans destinée aux métiers du numérique.
+          </p>
+          <p>
+            Cette formation permet d'apprendre à installer, configurer et dépanner des équipements informatiques,
+            des systèmes électroniques et des réseaux. Les élèves découvrent également les bases de la cybersécurité :
+            protection des données, sécurisation d'un réseau, analyse des risques.
+          </p>
+          <p>
+            Le bac comporte beaucoup de pratique : montage de PC, configuration de routeurs, utilisation de Windows et Linux,
+            diagnostic de pannes, et manipulation d'objets connectés. Il inclut aussi plusieurs semaines de stage en entreprise.
+          </p>
+        </div>
+
+        <p class="pull" data-reveal>
+          <em>En résumé, le Bac Pro CIEL forme des techniciens polyvalents capables d'intervenir sur l'informatique,
           les réseaux et les systèmes électroniques, tout en intégrant les enjeux de la cybersécurité.</em>
         </p>
       </div>
     </section>
 
-    <!-- Section Parcours -->
-    <section id="cv">
-      <h2>Mon Parcours</h2>
-      <div class="timeline-grid">
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <div class="timeline-date">2024 – Présent</div>
-            <h3>Bac Pro CIEL</h3>
-            <h4>MFR Pontonx-sur-Adour</h4>
-            <p>Formation en cybersécurité, réseaux et électronique. Délégué de classe en seconde.</p>
-          </div>
+    <!-- Parcours -->
+    <section id="cv" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="section__index" aria-hidden="true"></span>
+          <h2 class="section__title">Mon Parcours</h2>
         </div>
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <div class="timeline-date">2024 – Présent</div>
-            <h3>Apprentissage Maintenance</h3>
-            <h4>Leclerc du Grand Mail</h4>
-            <p>Maintenance informatique, gestion d'inventaire, réparation de matériel.</p>
-          </div>
-        </div>
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <div class="timeline-date">Janvier 2024</div>
-            <h3>Stage d'Observation</h3>
-            <h4>Leclerc du Grand Mail</h4>
-            <p>Observation et assistance en maintenance informatique.</p>
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <div class="timeline-date">2022 – 2024</div>
-            <h3>Collège d'Albret</h3>
-            <h4>Dax</h4>
-            <p>Brevet des Collèges mention Assez Bien.</p>
-          </div>
-        </div>
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <div class="timeline-date">2020 – 2022</div>
-            <h3>Collège François Truffaut</h3>
-            <h4>Saint-Martin-de-Seignanx</h4>
-            <p>Délégué de classe en 6e, ASSR1 obtenue en 2022.</p>
-          </div>
+
+        <div class="timeline">
+          <article class="tl-item" data-reveal>
+            <div class="tl-date">2024 – Présent</div>
+            <div class="tl-body">
+              <h3>Bac Pro CIEL</h3>
+              <div class="tl-place">MFR Pontonx-sur-Adour</div>
+              <p>Formation en cybersécurité, réseaux et électronique. Délégué de classe en seconde.</p>
+            </div>
+          </article>
+
+          <article class="tl-item" data-reveal>
+            <div class="tl-date">2024 – Présent</div>
+            <div class="tl-body">
+              <h3>Apprentissage Maintenance</h3>
+              <div class="tl-place">Leclerc du Grand Mail</div>
+              <p>Maintenance informatique, gestion d'inventaire, réparation de matériel.</p>
+            </div>
+          </article>
+
+          <article class="tl-item" data-reveal>
+            <div class="tl-date">Janvier 2024</div>
+            <div class="tl-body">
+              <h3>Stage d'Observation</h3>
+              <div class="tl-place">Leclerc du Grand Mail</div>
+              <p>Observation et assistance en maintenance informatique.</p>
+            </div>
+          </article>
+
+          <article class="tl-item" data-reveal>
+            <div class="tl-date">2022 – 2024</div>
+            <div class="tl-body">
+              <h3>Collège d'Albret</h3>
+              <div class="tl-place">Dax</div>
+              <p>Brevet des Collèges mention Assez Bien.</p>
+            </div>
+          </article>
+
+          <article class="tl-item" data-reveal>
+            <div class="tl-date">2020 – 2022</div>
+            <div class="tl-body">
+              <h3>Collège François Truffaut</h3>
+              <div class="tl-place">Saint-Martin-de-Seignanx</div>
+              <p>Délégué de classe en 6e, ASSR1 obtenue en 2022.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Section Compétences -->
-    <section id="skills">
-      <h2>Mes Compétences</h2>
-      <h3><i class="fas fa-code"></i> Développement Web</h3>
-      <ul class="skills-list">
-        <li>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><i class="fab fa-html5"></i> HTML5 – Structure</div>
-              <div class="flip-card-back"><img src="./image/html5.png" alt="HTML5" /></div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><i class="fab fa-css3-alt"></i> CSS3 – Flexbox/Grid</div>
-              <div class="flip-card-back"><img src="./image/css3.png" alt="CSS3" /></div>
-            </div>
-          </div>
-        </li>
-      </ul>
+    <!-- Compétences -->
+    <section id="skills" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="section__index" aria-hidden="true"></span>
+          <h2 class="section__title">Mes Compétences</h2>
+        </div>
 
-      <h3><i class="fas fa-network-wired"></i> Informatique & Réseaux</h3>
-      <ul class="skills-list">
-        <li>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><i class="fas fa-wifi"></i> Configuration IPv4</div>
-              <div class="flip-card-back"><img src="./image/IPV4.png" alt="IPv4" /></div>
+        <h3 class="subhead"><i class="fas fa-code" aria-hidden="true"></i> Développement Web</h3>
+        <ul class="skills">
+          <li class="skill" data-reveal>
+            <div class="skill__media" data-zoom="./image/html5.png" data-zoom-alt="HTML5" role="button" tabindex="0" aria-label="Agrandir l'image">
+              <img loading="lazy" decoding="async" src="./image/html5.png" alt="HTML5" />
+              <span class="skill__zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
             </div>
-          </div>
-        </li>
-        <li>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><i class="fas fa-desktop"></i> Montage PC</div>
-              <div class="flip-card-back"><img src="./image/montage_pc.png" alt="Montage PC" /></div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><i class="fab fa-windows"></i> <i class="fab fa-linux"></i> Dual Boot</div>
-              <div class="flip-card-back"></div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><i class="fas fa-ethernet"></i> Câblage RJ45</div>
-              <div class="flip-card-back"><img src="./image/CablageRJ45.jpg" alt="RJ45" /></div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><i class="fas fa-shield-alt"></i> Sécurité – Phishing</div>
-              <div class="flip-card-back"></div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front"><i class="fab fa-python"></i> Python – Scripts</div>
-              <div class="flip-card-back"></div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
+            <div class="skill__label"><i class="fab fa-html5" aria-hidden="true"></i> HTML5 – Structure</div>
+          </li>
 
-    <!-- Section Fiches d'Activité -->
-    <section id="activities">
-      <h2>Fiches d'Activité</h2>
-      <div class="activity-item" onclick="openPdfModal('./pdfs/Configuration_douchettes.pdf')">
-        <img src="./previews/Configuration_douchettes_preview.jpg" alt="Aperçu" class="activity-preview" />
-        <a href="#">Configuration de douchettes (11/02/25)</a>
-        <p>Remplacement et configuration de douchettes de caisse pour le scanning des articles.</p>
-      </div>
-      <div class="activity-item" onclick="openPdfModal('./pdfs/Nettoyage_PC_fixe.pdf')">
-        <img src="./previews/Nettoyage_PC_fixe_preview.jpg" alt="Aperçu" class="activity-preview" />
-        <a href="#">Nettoyage de PC fixe (21/10/24)</a>
-        <p>Nettoyage, remplacement et ajout de postes de travail en magasin.</p>
-      </div>
-      <div class="activity-item" onclick="openPdfModal('./pdfs/Branchement_antenne_switch_PoE.pdf')">
-        <img src="./previews/Branchement_antenne_switch_PoE_preview.jpg" alt="Aperçu" class="activity-preview" />
-        <a href="#">Branchement antenne + switch PoE (25/09/24)</a>
-        <p>Alimentation et connexion de routeurs via un switch PoE et une antenne WiFi.</p>
-      </div>
-      <div class="activity-item" onclick="openPdfModal('./pdfs/Dual_Boot_Windows_Linux.pdf')">
-        <img src="./previews/Dual_Boot_Windows_Linux_preview.jpg" alt="Aperçu" class="activity-preview" />
-        <a href="#">Dual Boot Windows/Linux (02/10/24)</a>
-        <p>Installation de Windows 10 Pro et Linux Mint en dual boot avec GRUB.</p>
-      </div>
-      <div class="activity-item" onclick="openPdfModal('./pdfs/Installation_Windows_Logiciels.pdf')">
-        <img src="./previews/Installation_Windows_Logiciels_preview.jpg" alt="Aperçu" class="activity-preview" />
-        <a href="#">Installation Windows + Logiciels (16/09/24)</a>
-        <p>Installation de Windows 10 Pro via Ventoy et configuration logicielle.</p>
-      </div>
-      <div class="activity-item" onclick="openPdfModal('./pdfs/Virtualisation.pdf')">
-        <img src="./previews/Virtualisation_preview.jpg" alt="Aperçu" class="activity-preview" />
-        <a href="#">Virtualisation (05/11/24)</a>
-        <p>Apprentissage de la virtualisation et installation de machines virtuelles.</p>
+          <li class="skill" data-reveal>
+            <div class="skill__media" data-zoom="./image/css3.png" data-zoom-alt="CSS3" role="button" tabindex="0" aria-label="Agrandir l'image">
+              <img loading="lazy" decoding="async" src="./image/css3.png" alt="CSS3" />
+              <span class="skill__zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+            </div>
+            <div class="skill__label"><i class="fab fa-css3-alt" aria-hidden="true"></i> CSS3 – Flexbox/Grid</div>
+          </li>
+        </ul>
+
+        <h3 class="subhead"><i class="fas fa-network-wired" aria-hidden="true"></i> Informatique &amp; Réseaux</h3>
+        <ul class="skills">
+          <li class="skill" data-reveal>
+            <div class="skill__media" data-zoom="./image/IPV4.png" data-zoom-alt="IPv4" role="button" tabindex="0" aria-label="Agrandir l'image">
+              <img loading="lazy" decoding="async" src="./image/IPV4.png" alt="IPv4" />
+              <span class="skill__zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+            </div>
+            <div class="skill__label"><i class="fas fa-wifi" aria-hidden="true"></i> Configuration IPv4</div>
+          </li>
+
+          <li class="skill" data-reveal>
+            <div class="skill__media" data-zoom="./image/montage_pc.png" data-zoom-alt="Montage PC" role="button" tabindex="0" aria-label="Agrandir l'image">
+              <img loading="lazy" decoding="async" src="./image/montage_pc.png" alt="Montage PC" />
+              <span class="skill__zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+            </div>
+            <div class="skill__label"><i class="fas fa-desktop" aria-hidden="true"></i> Montage PC</div>
+          </li>
+
+          <li class="skill" data-reveal>
+            <div class="skill__glyph" aria-hidden="true">
+              <i class="fab fa-windows"></i><i class="fab fa-linux"></i>
+            </div>
+            <div class="skill__label"><i class="fab fa-windows" aria-hidden="true"></i> <i class="fab fa-linux" aria-hidden="true"></i> Dual Boot</div>
+          </li>
+
+          <li class="skill" data-reveal>
+            <div class="skill__media" data-zoom="./image/CablageRJ45.jpg" data-zoom-alt="RJ45" role="button" tabindex="0" aria-label="Agrandir l'image">
+              <img loading="lazy" decoding="async" src="./image/CablageRJ45.jpg" alt="RJ45" />
+              <span class="skill__zoom" aria-hidden="true"><i class="fas fa-expand"></i></span>
+            </div>
+            <div class="skill__label"><i class="fas fa-ethernet" aria-hidden="true"></i> Câblage RJ45</div>
+          </li>
+
+          <li class="skill" data-reveal>
+            <div class="skill__glyph" aria-hidden="true"><i class="fas fa-shield-alt"></i></div>
+            <div class="skill__label"><i class="fas fa-shield-alt" aria-hidden="true"></i> Sécurité – Phishing</div>
+          </li>
+
+          <li class="skill" data-reveal>
+            <div class="skill__glyph" aria-hidden="true"><i class="fab fa-python"></i></div>
+            <div class="skill__label"><i class="fab fa-python" aria-hidden="true"></i> Python – Scripts</div>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- Section Attestations -->
-    <section id="certificates">
-      <h2>Attestations & Diplômes</h2>
-      <div class="certificates-grid">
-        <div class="certificate-card" onclick="openModal('./image/pix.png')">
-          <img src="./image/pix.png" alt="PIX" />
-          <h3>Certificat PIX</h3>
+    <!-- Fiches d'Activité -->
+    <section id="activities" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="section__index" aria-hidden="true"></span>
+          <h2 class="section__title">Fiches d'Activité</h2>
+        </div>
+
+        <div class="entries">
+          <article class="entry" data-pdf="./pdfs/Configuration_douchettes.pdf" role="button" tabindex="0" data-reveal>
+            <div class="entry__thumb"><img loading="lazy" decoding="async" src="./previews/Configuration_douchettes_preview.jpg" alt="Aperçu" /></div>
+            <div class="entry__body">
+              <h3 class="entry__title"><a href="#">Configuration de douchettes (11/02/25)</a></h3>
+              <p>Remplacement et configuration de douchettes de caisse pour le scanning des articles.</p>
+            </div>
+            <span class="entry__go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+          </article>
+
+          <article class="entry" data-pdf="./pdfs/Nettoyage_PC_fixe.pdf" role="button" tabindex="0" data-reveal>
+            <div class="entry__thumb"><img loading="lazy" decoding="async" src="./previews/Nettoyage_PC_fixe_preview.jpg" alt="Aperçu" /></div>
+            <div class="entry__body">
+              <h3 class="entry__title"><a href="#">Nettoyage de PC fixe (21/10/24)</a></h3>
+              <p>Nettoyage, remplacement et ajout de postes de travail en magasin.</p>
+            </div>
+            <span class="entry__go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+          </article>
+
+          <article class="entry" data-pdf="./pdfs/Branchement_antenne_switch_PoE.pdf" role="button" tabindex="0" data-reveal>
+            <div class="entry__thumb"><img loading="lazy" decoding="async" src="./previews/Branchement_antenne_switch_PoE_preview.jpg" alt="Aperçu" /></div>
+            <div class="entry__body">
+              <h3 class="entry__title"><a href="#">Branchement antenne + switch PoE (25/09/24)</a></h3>
+              <p>Alimentation et connexion de routeurs via un switch PoE et une antenne WiFi.</p>
+            </div>
+            <span class="entry__go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+          </article>
+
+          <article class="entry" data-pdf="./pdfs/Dual_Boot_Windows_Linux.pdf" role="button" tabindex="0" data-reveal>
+            <div class="entry__thumb"><img loading="lazy" decoding="async" src="./previews/Dual_Boot_Windows_Linux_preview.jpg" alt="Aperçu" /></div>
+            <div class="entry__body">
+              <h3 class="entry__title"><a href="#">Dual Boot Windows/Linux (02/10/24)</a></h3>
+              <p>Installation de Windows 10 Pro et Linux Mint en dual boot avec GRUB.</p>
+            </div>
+            <span class="entry__go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+          </article>
+
+          <article class="entry" data-pdf="./pdfs/Installation_Windows_Logiciels.pdf" role="button" tabindex="0" data-reveal>
+            <div class="entry__thumb"><img loading="lazy" decoding="async" src="./previews/Installation_Windows_Logiciels_preview.jpg" alt="Aperçu" /></div>
+            <div class="entry__body">
+              <h3 class="entry__title"><a href="#">Installation Windows + Logiciels (16/09/24)</a></h3>
+              <p>Installation de Windows 10 Pro via Ventoy et configuration logicielle.</p>
+            </div>
+            <span class="entry__go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+          </article>
+
+          <article class="entry" data-pdf="./pdfs/Virtualisation.pdf" role="button" tabindex="0" data-reveal>
+            <div class="entry__thumb"><img loading="lazy" decoding="async" src="./previews/Virtualisation_preview.jpg" alt="Aperçu" /></div>
+            <div class="entry__body">
+              <h3 class="entry__title"><a href="#">Virtualisation (05/11/24)</a></h3>
+              <p>Apprentissage de la virtualisation et installation de machines virtuelles.</p>
+            </div>
+            <span class="entry__go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+          </article>
         </div>
       </div>
     </section>
+
+    <!-- Attestations -->
+    <section id="certificates" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <span class="section__index" aria-hidden="true"></span>
+          <h2 class="section__title">Attestations &amp; Diplômes</h2>
+        </div>
+
+        <div class="certs">
+          <article class="cert" data-zoom="./image/pix.png" data-zoom-alt="PIX" role="button" tabindex="0" data-reveal>
+            <img loading="lazy" decoding="async" src="./image/pix.png" alt="PIX" />
+            <h3>Certificat PIX</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>Mathias JAVIERRE – Portfolio © 2024 - 2026</p>
+  <!-- ===================== Pied de page ===================== -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p>Mathias JAVIERRE – Portfolio © 2024 - 2026</p>
+      <span class="footer__mark" aria-hidden="true"><i class="fas fa-circle"></i></span>
+    </div>
   </footer>
 
-  <script>
-    // Sélecteurs
-    const $ = (q, ctx=document) => ctx.querySelector(q);
-    const $$ = (q, ctx=document) => Array.from(ctx.querySelectorAll(q));
+  <!-- ===================== Modales ===================== -->
+  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__fx" aria-hidden="true">
+      <span class="fx-orb fx-orb--a"></span>
+      <span class="fx-orb fx-orb--b"></span>
+      <span class="fx-orb fx-orb--c"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-grid"></span>
+      <span class="fx-sweep"></span>
+      <svg class="fx-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <rect class="fx-snake fx-snake--1" x="0" y="0" width="100" height="100" pathLength="100" />
+        <rect class="fx-snake fx-snake--2" x="0" y="0" width="100" height="100" pathLength="100" />
+      </svg>
+    </div>
+    <button class="modal__close" type="button" aria-label="Fermer">&times;</button>
+    <button class="modal__nav modal__nav--prev" type="button" aria-label="Image précédente">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="modal__nav modal__nav--next" type="button" aria-label="Image suivante">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="modal__body"><img loading="lazy" decoding="async" id="modalImage" src="" alt="" /></div>
+  </div>
 
-    // Calcul de l'âge (conservé)
-    function updateAge() {
-      const birthDate = new Date(2008, 2, 5);
-      const today = new Date();
-      let age = today.getFullYear() - birthDate.getFullYear();
-      const monthDiff = today.getMonth() - birthDate.getMonth();
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-      $$('#age, #age2').forEach(el => {
-        if (el) el.textContent = age;
-      });
-    }
-    updateAge();
-    setInterval(updateAge, 86400000);
+  <div id="videoModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__fx" aria-hidden="true">
+      <span class="fx-orb fx-orb--a"></span>
+      <span class="fx-orb fx-orb--b"></span>
+      <span class="fx-orb fx-orb--c"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-grid"></span>
+      <span class="fx-sweep"></span>
+      <svg class="fx-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <rect class="fx-snake fx-snake--1" x="0" y="0" width="100" height="100" pathLength="100" />
+        <rect class="fx-snake fx-snake--2" x="0" y="0" width="100" height="100" pathLength="100" />
+      </svg>
+    </div>
+    <button class="modal__close" type="button" aria-label="Fermer">&times;</button>
+    <div class="modal__body">
+      <video id="videoModalContent" controls playsinline>
+        <source src="Video/Projetue5.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
 
-    // Menu hamburger
-    const hamburger = $('#hamburger');
-    const nav = $('nav');
-    const navbar = $('#navbar');
-    hamburger.addEventListener('click', () => {
-      nav.classList.toggle('active');
-      hamburger.classList.toggle('open');
-    });
+  <div id="pdfModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__fx" aria-hidden="true">
+      <span class="fx-orb fx-orb--a"></span>
+      <span class="fx-orb fx-orb--b"></span>
+      <span class="fx-orb fx-orb--c"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-bar"></span>
+      <span class="fx-grid"></span>
+      <span class="fx-sweep"></span>
+      <svg class="fx-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <rect class="fx-snake fx-snake--1" x="0" y="0" width="100" height="100" pathLength="100" />
+        <rect class="fx-snake fx-snake--2" x="0" y="0" width="100" height="100" pathLength="100" />
+      </svg>
+    </div>
+    <button class="modal__close" type="button" aria-label="Fermer">&times;</button>
+    <div class="modal__body"><iframe id="pdfFrame" title="Document PDF"></iframe></div>
+  </div>
 
-    // Fermeture du menu sur lien
-    $$('.navbar a').forEach(a => {
-      a.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          nav.classList.remove('active');
-          hamburger.classList.remove('open');
-        }
-      });
-    });
+  <button class="to-top" type="button" aria-label="Revenir en haut">
+    <svg class="to-top__ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+      <circle class="to-top__track" cx="22" cy="22" r="20"/>
+      <circle class="to-top__bar" cx="22" cy="22" r="20"/>
+    </svg>
+    <svg class="to-top__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
 
-    // Navigation entre sections
-    function showSection(sectionId) {
-      $$('main section').forEach(s => s.classList.remove('active'));
-      $$('.navbar a').forEach(l => l.classList.remove('active'));
-      const section = $(`#${sectionId}`);
-      const link = $(`.navbar a[href="#${sectionId}"]`);
-      if (section && link) {
-        section.classList.add('active');
-        link.classList.add('active');
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    $$('.navbar a[href^="#"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        showSection(targetId);
-      });
-    });
-
-    // Modale images
-    const modal = $('#imageModal');
-    const modalImg = $('#modalImage');
-    const closeModal = modal.querySelector('.close');
-    
-    window.openModal = (src) => {
-      modal.classList.add('open');
-      modalImg.src = src;
-      document.body.style.overflow = 'hidden';
-    };
-
-    closeModal.addEventListener('click', () => {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-    });
-
-    // Modale vidéo ( Changé la video )
-    const videoModal = $('#videoModal');
-    const videoContent = $('#videoModalContent');
-    const closeVideo = videoModal.querySelector('.close');
-    const profilePhoto = $('#profilePhoto');
-    const speechBubble = $('#speechBubble');
-
-    function openVideoModal() {
-      videoModal.classList.add('open');
-      videoContent.play().catch(() => {});
-      document.body.style.overflow = 'hidden';
-    }
-
-    profilePhoto.addEventListener('click', openVideoModal);
-    speechBubble.addEventListener('click', openVideoModal);
-
-    closeVideo.addEventListener('click', () => {
-      videoModal.classList.remove('open');
-      videoContent.pause();
-      videoContent.currentTime = 0;
-      document.body.style.overflow = '';
-    });
-
-    videoModal.addEventListener('click', (e) => {
-      if (e.target === videoModal) {
-        videoModal.classList.remove('open');
-        videoContent.pause();
-        videoContent.currentTime = 0;
-        document.body.style.overflow = '';
-      }
-    });
-
-    // Modale PDF
-    const pdfModal = $('#pdfModal');
-    const pdfFrame = $('#pdfFrame');
-    const closePdf = pdfModal.querySelector('.close');
-
-    window.openPdfModal = (url) => {
-      pdfFrame.src = url;
-      pdfModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    };
-
-    closePdf.addEventListener('click', () => {
-      pdfModal.classList.remove('open');
-      pdfFrame.src = '';
-      document.body.style.overflow = '';
-    });
-
-    pdfModal.addEventListener('click', (e) => {
-      if (e.target === pdfModal) {
-        pdfModal.classList.remove('open');
-        pdfFrame.src = '';
-        document.body.style.overflow = '';
-      }
-    });
-
-    // Back to top
-    const backToTop = $('#backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
-    });
-
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Escape key
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (modal.classList.contains('open')) {
-          modal.classList.remove('open');
-          document.body.style.overflow = '';
-        }
-        if (videoModal.classList.contains('open')) {
-          videoModal.classList.remove('open');
-          videoContent.pause();
-          videoContent.currentTime = 0;
-          document.body.style.overflow = '';
-        }
-        if (pdfModal.classList.contains('open')) {
-          pdfModal.classList.remove('open');
-          pdfFrame.src = '';
-          document.body.style.overflow = '';
-        }
-      }
-    });
-
-    // Scroll spy
-    const sections = $$('main section[id]');
-    const navLinks = $$('.navbar a[href^="#"]');
-    
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top + window.scrollY - 200;
-        if (window.scrollY >= top) {
-          current = sec.id;
-        }
-      });
-      navLinks.forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href') === '#' + current) {
-          a.classList.add('active');
-        }
-      });
-    });
-  </script>
+  <script src="./assets/js/site.js"></script>
 </body>
 </html>
